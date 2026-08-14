@@ -12,7 +12,7 @@
 
 ## 🚀 **Live Demo**
 
-🔗 **Visit:** [https://shanecodes-glitch.github.io/shanecodes-tech-hub](https://shanecodes-glitch.github.io/shanecodes-tech-hub)
+🔗 **Visit:** [https://shanecodes-glitch.github.io/SHANECODES-TECH-HUB/#home](https://shanecodes-glitch.github.io/shanecodes-tech-hub)
 
 ---
 
