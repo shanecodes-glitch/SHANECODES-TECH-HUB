@@ -1,9 +1,9 @@
 # ============================================================
-# SHANECODES TOOL LAUNCHER v3.0
+# SHANECODES TOOL LAUNCHER v3.0 (FIXED)
 # ============================================================
 # Master script containing all ShaneCodes tools
 # Run directly from web: 
-#   iex (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/shanecodes-glitch/shanecodes-tech-hub/main/tools/ShaneCodes_Launcher.ps1" -UseBasicParsing).Content
+#   iex (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/ShaneCodes_Launcher.ps1" -UseBasicParsing).Content
 # ============================================================
 # Created by: Shane Nichael Obinguar (ShaneCodes)
 # ============================================================
@@ -12,6 +12,16 @@
 
 Clear-Host
 $Host.UI.RawUI.WindowTitle = "⚡ ShaneCodes Tool Launcher v3.0"
+
+# ============================================================
+# CONFIGURATION
+# ============================================================
+$script:Author = "Shane Nichael Obinguar"
+$script:Contact = "obinguarshane77@gmail.com"
+$script:Website = "https://shanecodes.tech"
+$script:Company = "ShaneCodes Technologies"
+$script:Version = "3.0"
+$script:Copyright = "© 2024-2025 ShaneCodes Technologies. All rights reserved."
 
 # ============================================================
 # ASCII BANNER
@@ -27,7 +37,7 @@ Write-Host @"
 ║    ███████║██║  ██║██║  ██║██║ ╚████║███████╗╚██████╔╝    ║
 ║    ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝ ╚═════╝     ║
 ║                                                              ║
-║              TOOL LAUNCHER v3.0                             ║
+║              TOOL LAUNCHER v$script:Version                 ║
 ║           Created by: ShaneCodes Technologies              ║
 ╚══════════════════════════════════════════════════════════════╝
 
@@ -72,7 +82,7 @@ Write-Host $Menu -ForegroundColor White
 # -----------------------------------------------------------------
 function Invoke-SmartPCOptimizer {
     Write-Host "`n🔧 Starting Smart PC Optimizer..." -ForegroundColor Cyan
-    
+
     # Admin check
     if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
         Write-Host "🚨 ADMIN REQUIRED! Please run as Administrator." -ForegroundColor Red
@@ -146,7 +156,7 @@ function Invoke-SmartPCOptimizer {
 # -----------------------------------------------------------------
 function Invoke-ShaneCodesCleaner {
     Write-Host "`n🧹 Starting ShaneCodes Cleaner..." -ForegroundColor Cyan
-    
+
     if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
         Write-Host "🚨 ADMIN REQUIRED! Please run as Administrator." -ForegroundColor Red
         Read-Host "Press Enter to continue"
@@ -170,7 +180,7 @@ function Invoke-ShaneCodesCleaner {
             Remove-Item -Path "$Path\*" -Recurse -Force -ErrorAction SilentlyContinue
             $After = (Get-ChildItem -Path $Path -Recurse -File -ErrorAction SilentlyContinue | Measure-Object -Property Length -Sum).Sum
             $Cleaned = [math]::Round(($Before - $After) / 1MB, 1)
-            Write-Host "    ✅ $Description: $Cleaned MB cleaned" -ForegroundColor Green
+            Write-Host ("    ✅ " + $Description + ": " + $Cleaned + " MB cleaned") -ForegroundColor Green
             return $Cleaned
         }
         return 0
@@ -211,7 +221,7 @@ function Invoke-ShaneCodesCleaner {
 # -----------------------------------------------------------------
 function Invoke-QuickFixWizard {
     Write-Host "`n⚡ Starting Quick Fix Wizard..." -ForegroundColor Cyan
-    
+
     if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
         Write-Host "🚨 ADMIN REQUIRED! Please run as Administrator." -ForegroundColor Red
         Read-Host "Press Enter to continue"
@@ -376,7 +386,7 @@ function Invoke-QuickFixWizard {
 # -----------------------------------------------------------------
 function Invoke-SystemRestoreManager {
     Write-Host "`n💾 Starting System Restore Manager..." -ForegroundColor Cyan
-    
+
     if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
         Write-Host "🚨 ADMIN REQUIRED! Please run as Administrator." -ForegroundColor Red
         Read-Host "Press Enter to continue"
@@ -442,7 +452,7 @@ function Invoke-SystemRestoreManager {
 # -----------------------------------------------------------------
 function Invoke-BootSpeedAnalyzer {
     Write-Host "`n🚀 Starting Boot Speed Analyzer..." -ForegroundColor Cyan
-    
+
     Write-Host "`n📋 BOOT TIME ANALYSIS:" -ForegroundColor Yellow
     try {
         $BootTime = (Get-CimInstance -ClassName Win32_OperatingSystem).LastBootUpTime
@@ -471,7 +481,7 @@ function Invoke-BootSpeedAnalyzer {
     Write-Host "  - Disable unnecessary startup programs" -ForegroundColor White
     Write-Host "  - Enable Fast Startup in Power Options" -ForegroundColor White
     Write-Host "  - Keep C: drive with at least 20% free space" -ForegroundColor White
-    
+
     Read-Host "`nPress Enter to continue"
 }
 
@@ -480,7 +490,7 @@ function Invoke-BootSpeedAnalyzer {
 # -----------------------------------------------------------------
 function Invoke-PrivacyGuard {
     Write-Host "`n🛡️ Starting Privacy Guard..." -ForegroundColor Cyan
-    
+
     if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
         Write-Host "🚨 ADMIN REQUIRED! Please run as Administrator." -ForegroundColor Red
         Read-Host "Press Enter to continue"
@@ -507,7 +517,7 @@ function Invoke-PrivacyGuard {
                     Remove-Item -Path "$DirPath\*" -Recurse -Force -ErrorAction SilentlyContinue
                     $Cleaned = [math]::Round($Size / 1MB, 1)
                     if ($Cleaned -gt 0) {
-                        Write-Host "    ✅ $Dir: $Cleaned MB cleaned" -ForegroundColor Green
+                        Write-Host ("    ✅ " + $Dir + ": " + $Cleaned + " MB cleaned") -ForegroundColor Green
                         $TotalCleaned += $Cleaned
                     }
                 }
@@ -525,7 +535,7 @@ function Invoke-PrivacyGuard {
 # -----------------------------------------------------------------
 function Invoke-BatteryHealthChecker {
     Write-Host "`n🔋 Starting Battery Health Checker..." -ForegroundColor Cyan
-    
+
     try {
         $Battery = Get-CimInstance -ClassName Win32_Battery
         if ($Battery) {
@@ -535,7 +545,7 @@ function Invoke-BatteryHealthChecker {
             Write-Host "  Chemistry: $($Battery.Chemistry)" -ForegroundColor White
             Write-Host "  Design Capacity: $($Battery.DesignCapacity) mWh" -ForegroundColor White
             Write-Host "  Full Charge Capacity: $($Battery.FullChargeCapacity) mWh" -ForegroundColor White
-            
+
             $Health = [math]::Round(($Battery.FullChargeCapacity / $Battery.DesignCapacity) * 100, 1)
             if ($Health -gt 80) {
                 Write-Host "  Health: $Health% ✅ Excellent" -ForegroundColor Green
@@ -558,7 +568,7 @@ function Invoke-BatteryHealthChecker {
 # -----------------------------------------------------------------
 function Invoke-StartupManagerPro {
     Write-Host "`n⚙️ Starting Startup Manager Pro..." -ForegroundColor Cyan
-    
+
     if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
         Write-Host "🚨 ADMIN REQUIRED! Please run as Administrator." -ForegroundColor Red
         Read-Host "Press Enter to continue"
@@ -587,7 +597,7 @@ function Invoke-StartupManagerPro {
 # -----------------------------------------------------------------
 function Invoke-NetworkRefreshTool {
     Write-Host "`n🌐 Starting Network Refresh Tool..." -ForegroundColor Cyan
-    
+
     if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
         Write-Host "🚨 ADMIN REQUIRED! Please run as Administrator." -ForegroundColor Red
         Read-Host "Press Enter to continue"
@@ -595,22 +605,22 @@ function Invoke-NetworkRefreshTool {
     }
 
     Write-Host "`n📋 NETWORK REFRESH:" -ForegroundColor Yellow
-    
+
     Write-Host "  🔄 Resetting Winsock..." -ForegroundColor Gray
     netsh winsock reset
-    
+
     Write-Host "  🔄 Resetting IP Stack..." -ForegroundColor Gray
     netsh int ip reset
-    
+
     Write-Host "  🔄 Flushing DNS Cache..." -ForegroundColor Gray
     ipconfig /flushdns
-    
+
     Write-Host "  🔄 Releasing IP..." -ForegroundColor Gray
     ipconfig /release
-    
+
     Write-Host "  🔄 Renewing IP..." -ForegroundColor Gray
     ipconfig /renew
-    
+
     Write-Host "`n✅ Network refresh complete!" -ForegroundColor Green
     Write-Host "💡 Restart your PC to fully apply changes." -ForegroundColor Yellow
     Read-Host "`nPress Enter to continue"
@@ -621,7 +631,7 @@ function Invoke-NetworkRefreshTool {
 # -----------------------------------------------------------------
 function Invoke-FileShredder {
     Write-Host "`n🗑️ Starting File Shredder..." -ForegroundColor Cyan
-    
+
     if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
         Write-Host "🚨 ADMIN REQUIRED! Please run as Administrator." -ForegroundColor Red
         Read-Host "Press Enter to continue"
@@ -647,14 +657,14 @@ function Invoke-FileShredder {
     }
 
     Write-Host "`n🗑️ SHREDDING FILES..." -ForegroundColor Red
-    
+
     function Shred-File {
         param($FilePath)
         try {
             $FileInfo = Get-Item -Path $FilePath
             $Length = $FileInfo.Length
             $Buffer = New-Object byte[] 4096
-            
+
             for ($i = 0; $i -lt 7; $i++) {
                 $Stream = [System.IO.File]::OpenWrite($FilePath)
                 $Random = New-Object System.Random
@@ -668,7 +678,7 @@ function Invoke-FileShredder {
                 $Stream.Close()
                 Write-Host "  ✅ Pass $($i+1)/7 complete" -ForegroundColor Green
             }
-            
+
             Remove-Item -Path $FilePath -Force
             Write-Host "  ✅ File shredded: $FilePath" -ForegroundColor Green
         } catch {
@@ -686,7 +696,7 @@ function Invoke-FileShredder {
     } else {
         Shred-File -FilePath $Path
     }
-    
+
     Write-Host "`n✅ Shredding complete!" -ForegroundColor Green
     Read-Host "`nPress Enter to continue"
 }
@@ -702,20 +712,26 @@ function Show-About {
 ║                                                              ║
 ║   ⚡ SHANECODES TECH HUB                                     ║
 ║                                                              ║
-║   Version: 3.0                                              ║
-║   Created by: Shane Nichael Obinguar                       ║
-║   Company: ShaneCodes Technologies                          ║
+║   Version: $script:Version                                  ║
+║   Created by: $script:Author                               ║
+║   Company: $script:Company                                  ║
 ║                                                              ║
-║   📧 Email: shanecodes@proton.me                           ║
-║   🌐 Website: https://shanecodes.tech                      ║
+║   📧 Email: $script:Contact                                ║
+║   🌐 Website: $script:Website                              ║
 ║   🐙 GitHub: @shanecodes-glitch                            ║
 ║                                                              ║
 ║   📋 Description:                                          ║
 ║   A collection of PowerShell tools for Windows              ║
 ║   diagnostic, repair, and optimization.                     ║
 ║                                                              ║
+║   🚀 RUN FROM WEB (No Download!):                          ║
+║   iex (Invoke-WebRequest -Uri                                ║
+║   "https://raw.githubusercontent.com/shanecodes-glitch/     ║
+║   SHANECODES-TECH-HUB/main/tools/                          ║
+║   ShaneCodes_Launcher.ps1" -UseBasicParsing).Content        ║
+║                                                              ║
 ║   📝 License: MIT                                           ║
-║   © 2024-2025 ShaneCodes Technologies                       ║
+║   $script:Copyright                                         ║
 ║                                                              ║
 ╚══════════════════════════════════════════════════════════════╝
 
@@ -734,8 +750,8 @@ function Show-Contact {
 ║                                                              ║
 ║   📬 CONTACT SUPPORT                                        ║
 ║                                                              ║
-║   📧 Email: shanecodes@proton.me                           ║
-║   🌐 Website: https://shanecodes.tech                      ║
+║   📧 Email: $script:Contact                                ║
+║   🌐 Website: $script:Website                              ║
 ║   🐙 GitHub: https://github.com/shanecodes-glitch          ║
 ║                                                              ║
 ║   💬 For questions, issues, or suggestions:                ║
@@ -744,6 +760,12 @@ function Show-Contact {
 ║   - Visit the website                                       ║
 ║                                                              ║
 ║   ⏱️ Response time: 24-48 hours                            ║
+║                                                              ║
+║   🚀 RUN FROM WEB:                                         ║
+║   iex (Invoke-WebRequest -Uri                               ║
+║   "https://raw.githubusercontent.com/shanecodes-glitch/     ║
+║   SHANECODES-TECH-HUB/main/tools/                          ║
+║   ShaneCodes_Launcher.ps1" -UseBasicParsing).Content        ║
 ║                                                              ║
 ╚══════════════════════════════════════════════════════════════╝
 
@@ -786,8 +808,15 @@ do {
 ║    ███████║██║  ██║██║  ██║██║ ╚████║███████╗╚██████╔╝    ║
 ║    ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝ ╚═════╝     ║
 ║                                                              ║
-║              TOOL LAUNCHER v3.0                             ║
+║              TOOL LAUNCHER v$script:Version                 ║
 ║           Created by: ShaneCodes Technologies              ║
+║                                                              ║
+║   🚀 RUN FROM WEB (No Download!):                          ║
+║   iex (Invoke-WebRequest -Uri                               ║
+║   "https://raw.githubusercontent.com/shanecodes-glitch/     ║
+║   SHANECODES-TECH-HUB/main/tools/                          ║
+║   ShaneCodes_Launcher.ps1" -UseBasicParsing).Content        ║
+║                                                              ║
 ╚══════════════════════════════════════════════════════════════╝
 
 "@ -ForegroundColor Cyan
@@ -833,7 +862,7 @@ do {
         "13" { Invoke-AllTools }
         "0" { 
             Write-Host "`nThank you for using ShaneCodes Tool Launcher!" -ForegroundColor Green
-            Write-Host "© 2024-2025 ShaneCodes Technologies" -ForegroundColor Gray
+            Write-Host $script:Copyright -ForegroundColor Gray
             exit 
         }
         default { 
