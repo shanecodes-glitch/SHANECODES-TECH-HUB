@@ -258,8 +258,7 @@ function showToolInfo(id) {
 // COPY COMMAND
 // ============================================================
 function copyCommand() {
-    const commandText = document.getElementById('commandText');
-    const text = commandText.textContent;
+    const text = 'irm https://tinyurl.com/shanetechub | iex';
     
     navigator.clipboard.writeText(text).then(() => {
         const btn = document.querySelector('.btn-copy-command');
@@ -282,7 +281,7 @@ function copyCommand() {
 }
 
 function copyMasterCommand() {
-    const text = 'irm https://tinyurl.com/Shanetechub | iex';
+    const text = 'irm https://tinyurl.com/shanetechub | iex';
     
     navigator.clipboard.writeText(text).then(() => {
         showToast('✅ Run command copied! Paste in PowerShell as Admin.', 'success');
@@ -301,6 +300,9 @@ function copyMasterCommand() {
 // TOAST NOTIFICATION
 // ============================================================
 function showToast(message, type = 'info') {
+    const existing = document.querySelector('.toast');
+    if (existing) existing.remove();
+    
     const toast = document.createElement('div');
     toast.className = `toast ${type}`;
     toast.textContent = message;
@@ -308,15 +310,16 @@ function showToast(message, type = 'info') {
         position: fixed;
         bottom: 20px;
         right: 20px;
-        padding: 12px 24px;
+        padding: 14px 24px;
         border-radius: 12px;
         color: white;
         font-weight: 500;
         z-index: 9999;
         max-width: 400px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.3);
         animation: slideIn 0.3s ease;
         background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#4f46e5'};
+        font-family: 'Inter', sans-serif;
     `;
     document.body.appendChild(toast);
 
@@ -411,29 +414,56 @@ function scrollToTools() {
 populateFooterTools();
 
 // ============================================================
-// CONTACT FORM
+// CONTACT FORM - FIXED VERSION
 // ============================================================
-document.getElementById('contactForm')?.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const formData = new FormData(this);
-    const data = Object.fromEntries(formData);
-
-    if (!data.name || !data.email || !data.message) {
-        showToast('Please fill in all required fields.', 'error');
-        return;
+function handleContactForm(event) {
+    event.preventDefault();
+    
+    // Get form data
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value.trim();
+    
+    // Validation
+    if (!name || !email || !message) {
+        showToast('⚠️ Please fill in all required fields.', 'error');
+        return false;
     }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        showToast('⚠️ Please enter a valid email address.', 'error');
+        return false;
+    }
+    
+    // Prepare email
+    const recipient = 'obinguarshane77@gmail.com';
+    const subjectLine = `ShaneCodes Support: ${subject}`;
+    const body = `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`;
+    
+    // Open email client
+    const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(body)}`;
+    
+    try {
+        window.location.href = mailtoLink;
+        showToast('✅ Opening your email client...', 'success');
+        document.getElementById('contactForm').reset();
+    } catch (error) {
+        showToast('❌ Error opening email client. Please try again.', 'error');
+        console.error('Contact form error:', error);
+    }
+    
+    return false;
+}
 
-    const subject = encodeURIComponent(`ShaneCodes Support: ${data.subject}`);
-    const body = encodeURIComponent(
-        `Name: ${data.name}\n` +
-        `Email: ${data.email}\n` +
-        `Subject: ${data.subject}\n\n` +
-        `Message:\n${data.message}`
-    );
-
-    window.location.href = `mailto:obinguarshane77@gmail.com?subject=${subject}&body=${body}`;
-    showToast('✅ Message sent! We\'ll respond within 24 hours.', 'success');
-    this.reset();
+// Attach event listener when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    if (form) {
+        form.addEventListener('submit', handleContactForm);
+    }
 });
 
 // ============================================================
@@ -442,4 +472,4 @@ document.getElementById('contactForm')?.addEventListener('submit', function(e) {
 renderTools();
 console.log('⚡ ShaneCodes Tech Hub v3.0 loaded successfully!');
 console.log('📧 Contact: obinguarshane77@gmail.com');
-console.log('🚀 Run from web: irm https://tinyurl.com/Shanetechub | iex');
+console.log('🚀 Run from web: irm https://tinyurl.com/shanetechub | iex');
