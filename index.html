@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShaneCodes Tech Hub</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">Shane<span>Codes</span></span>
+                <span class="logo-badge">v3.0</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">🚀 Next Generation Tools</div>
+                <h1 class="hero-title">
+                    Welcome to<br />
+                    <span class="gradient-text">ShaneCodes</span> Tech Hub
+                </h1>
+                <p class="hero-description">
+                    Your one-stop destination for powerful Windows diagnostic,
+                    repair, and automation tools. Built with precision and
+                    designed for performance.
+                </p>
+                <div class="hero-actions">
+                    <a href="#tools" class="btn btn-primary">Explore Tools →</a>
+                    <a href="#about" class="btn btn-secondary">Learn More</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" data-count="12">0</span>
+                        <span class="stat-label">Tools</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="1500">0</span>
+                        <span class="stat-label">Downloads</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="100">0</span>
+                        <span class="stat-label">Users</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-cards">
+                    <div class="float-card card-1">🛠️</div>
+                    <div class="float-card card-2">⚡</div>
+                    <div class="float-card card-3">🔧</div>
+                    <div class="float-card card-4">💻</div>
+                </div>
+                <div class="hero-code-block">
+                    <pre><code><span class="code-comment"># ShaneCodes Tools v1.0</span>
+<span class="code-keyword">function</span> <span class="code-function">Start-Repair</span> {
+    <span class="code-variable">$system</span> = <span class="code-function">Get-SystemInfo</span>
+    <span class="code-keyword">if</span> (<span class="code-variable">$system</span>.<span class="code-property">Status</span> -ne <span class="code-string">"OK"</span>) {
+        <span class="code-function">Fix-Issues</span> -Force
+    }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TOOLS SECTION ===== -->
+    <section id="tools" class="tools-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">🛠️ Tool Repository</div>
+                <h2 class="section-title">Our <span class="gradient-text">Tool</span> Collection</h2>
+                <p class="section-desc">
+                    Each tool is crafted to solve specific Windows issues.
+                    Download and run with confidence.
+                </p>
+            </div>
+
+            <div class="tools-filter">
+                <button class="filter-btn active" data-filter="all">All Tools</button>
+                <button class="filter-btn" data-filter="diagnostic">Diagnostic</button>
+                <button class="filter-btn" data-filter="repair">Repair</button>
+                <button class="filter-btn" data-filter="utility">Utility</button>
+                <button class="filter-btn" data-filter="security">Security</button>
+            </div>
+
+            <div class="tools-grid" id="toolsGrid">
+                <!-- Tools will be injected by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <div class="section-label">👨‍💻 About The Creator</div>
+                    <h2 class="section-title">Shane <span class="gradient-text">Nichael</span> Obinguar</h2>
+                    <p class="about-text">
+                        I'm a passionate developer who believes that technology
+                        should be accessible to everyone. These tools are my
+                        contribution to making Windows maintenance simpler
+                        and more efficient.
+                    </p>
+                    <div class="about-skills">
+                        <div class="skill">
+                            <span class="skill-name">PowerShell</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 95%"></div></div>
+                        </div>
+                        <div class="skill">
+                            <span class="skill-name">Batch/CMD</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+                        </div>
+                        <div class="skill">
+                            <span class="skill-name">Python</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+                        </div>
+                        <div class="skill">
+                            <span class="skill-name">Web Development</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 75%"></div></div>
+                        </div>
+                    </div>
+                    <div class="about-social">
+                        <a href="https://github.com/shanecodes-glitch" target="_blank" class="social-link">
+                            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            GitHub
+                        </a>
+                        <a href="mailto:shanecodes@proton.me" class="social-link">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            Email
+                        </a>
+                        <a href="https://shanecodes.tech" target="_blank" class="social-link">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.48 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                            Website
+                        </a>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="profile-card">
+                        <div class="profile-avatar">👨‍💻</div>
+                        <div class="profile-info">
+                            <h3>Shane Nichael Obinguar</h3>
+                            <p>Founder & Lead Developer</p>
+                            <span class="profile-badge">ShaneCodes Technologies</span>
+                        </div>
+                        <div class="profile-stats">
+                            <div><strong>12+</strong> Tools Created</div>
+                            <div><strong>5+</strong> Years Experience</div>
+                            <div><strong>100%</strong> Free & Open Source</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT SECTION ===== -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">📬 Get In Touch</div>
+                <h2 class="section-title">Contact <span class="gradient-text">Support</span></h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <h4>Email</h4>
+                        <p>shanecodes@proton.me</p>
+                        <small>Response within 24 hours</small>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">🌐</div>
+                        <h4>Website</h4>
+                        <p>https://shanecodes.tech</p>
+                        <small>Visit for updates</small>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">🐙</div>
+                        <h4>GitHub</h4>
+                        <p>@shanecodes-glitch</p>
+                        <small>Open source projects</small>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" placeholder="Enter your name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject">
+                            <option value="tool-issue">Tool Issue</option>
+                            <option value="suggestion">Suggestion</option>
+                            <option value="collaboration">Collaboration</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="4" placeholder="Describe your issue or suggestion..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message →</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="logo-icon">⚡</span>
+                    <span class="logo-text">Shane<span>Codes</span></span>
+                    <p>Empowering users with powerful Windows tools.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#tools">Tools</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Tools</h4>
+                    <ul id="footerTools">
+                        <!-- Dynamically generated -->
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe for tool updates.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your email" />
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024-2025 ShaneCodes Technologies. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="https://github.com/shanecodes-glitch" target="_blank">GitHub</a>
+                    <a href="mailto:shanecodes@proton.me">Email</a>
+                    <a href="https://shanecodes.tech" target="_blank">Website</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="script.js"></script>
+</body>
+</html>
