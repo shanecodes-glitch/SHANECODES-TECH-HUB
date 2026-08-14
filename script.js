@@ -1,9 +1,9 @@
 // ============================================================
-// SHANECODES TECH HUB - MAIN SCRIPT
+// SHANECODES TECH HUB - MAIN SCRIPT v3.0
 // ============================================================
 
 // ============================================================
-// TOOL DATA - Read from tools folder
+// TOOL DATA
 // ============================================================
 const tools = [
     {
@@ -227,7 +227,6 @@ filterBtns.forEach(btn => {
 // TOOL ACTIONS
 // ============================================================
 function trackDownload(toolName) {
-    // Track download for stats
     const downloadStat = document.querySelector('.stat-number[data-count="1500"]');
     if (downloadStat) {
         let count = parseInt(downloadStat.textContent) || 0;
@@ -253,6 +252,49 @@ function showToolInfo(id) {
             `3. Follow on-screen instructions`
         );
     }
+}
+
+// ============================================================
+// COPY COMMAND
+// ============================================================
+function copyCommand() {
+    const commandText = document.getElementById('commandText');
+    const text = commandText.textContent;
+    
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.btn-copy-command');
+        btn.textContent = '✅ Copied!';
+        btn.classList.add('copied');
+        showToast('✅ Command copied to clipboard!', 'success');
+        setTimeout(() => {
+            btn.textContent = '📋 Copy';
+            btn.classList.remove('copied');
+        }, 3000);
+    }).catch(() => {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        showToast('✅ Command copied to clipboard!', 'success');
+    });
+}
+
+function copyMasterCommand() {
+    const text = 'iex (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/shanecodes-glitch/shanecodes-tech-hub/main/tools/ShaneCodes_Launcher.ps1" -UseBasicParsing).Content';
+    
+    navigator.clipboard.writeText(text).then(() => {
+        showToast('✅ Run command copied! Paste in PowerShell as Admin.', 'success');
+    }).catch(() => {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        showToast('✅ Run command copied!', 'success');
+    });
 }
 
 // ============================================================
@@ -389,7 +431,7 @@ document.getElementById('contactForm')?.addEventListener('submit', function(e) {
         `Message:\n${data.message}`
     );
 
-    window.location.href = `mailto:shanecodes@proton.me?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:obinguarshane77@gmail.com?subject=${subject}&body=${body}`;
     showToast('✅ Message sent! We\'ll respond within 24 hours.', 'success');
     this.reset();
 });
@@ -398,4 +440,6 @@ document.getElementById('contactForm')?.addEventListener('submit', function(e) {
 // INIT
 // ============================================================
 renderTools();
-console.log('⚡ ShaneCodes Tech Hub loaded successfully!');
+console.log('⚡ ShaneCodes Tech Hub v3.0 loaded successfully!');
+console.log('📧 Contact: obinguarshane77@gmail.com');
+console.log('🚀 Run from web: iex (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/shanecodes-glitch/shanecodes-tech-hub/main/tools/ShaneCodes_Launcher.ps1" -UseBasicParsing).Content');

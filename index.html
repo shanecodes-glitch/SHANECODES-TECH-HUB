@@ -49,6 +49,23 @@
                     repair, and automation tools. Built with precision and
                     designed for performance.
                 </p>
+
+                <!-- ===== ONE-COMMAND POWERSHELL RUN ===== -->
+                <div class="hero-command-box">
+                    <div class="command-label">⚡ RUN FROM WEB (No Download!)</div>
+                    <div class="command-container">
+                        <code class="command-text" id="commandText">
+                            iex (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/shanecodes-glitch/shanecodes-tech-hub/main/tools/ShaneCodes_Launcher.ps1" -UseBasicParsing).Content
+                        </code>
+                        <button class="btn-copy-command" onclick="copyCommand()" title="Copy to clipboard">
+                            📋 Copy
+                        </button>
+                    </div>
+                    <div class="command-hint">
+                        💡 Copy and paste this in PowerShell (as Administrator)
+                    </div>
+                </div>
+
                 <div class="hero-actions">
                     <a href="#tools" class="btn btn-primary">Explore Tools →</a>
                     <a href="#about" class="btn btn-secondary">Learn More</a>
@@ -76,13 +93,9 @@
                     <div class="float-card card-4">💻</div>
                 </div>
                 <div class="hero-code-block">
-                    <pre><code><span class="code-comment"># ShaneCodes Tools v1.0</span>
-<span class="code-keyword">function</span> <span class="code-function">Start-Repair</span> {
-    <span class="code-variable">$system</span> = <span class="code-function">Get-SystemInfo</span>
-    <span class="code-keyword">if</span> (<span class="code-variable">$system</span>.<span class="code-property">Status</span> -ne <span class="code-string">"OK"</span>) {
-        <span class="code-function">Fix-Issues</span> -Force
-    }
-}</code></pre>
+                    <pre><code><span class="code-comment"># ShaneCodes Tools v3.0</span>
+<span class="code-comment"># Run from web - No download!</span>
+<span class="code-keyword">iex</span> (<span class="code-function">Invoke-WebRequest</span> -Uri <span class="code-string">"https://raw.githubusercontent.com/shanecodes-glitch/shanecodes-tech-hub/main/tools/ShaneCodes_Launcher.ps1"</span> -UseBasicParsing).<span class="code-property">Content</span></code></pre>
                 </div>
             </div>
         </div>
@@ -110,6 +123,24 @@
 
             <div class="tools-grid" id="toolsGrid">
                 <!-- Tools will be injected by JavaScript -->
+            </div>
+
+            <!-- ===== MASTER LAUNCHER CARD ===== -->
+            <div class="master-launcher-card">
+                <div class="master-launcher-content">
+                    <div class="master-icon">🚀</div>
+                    <div class="master-info">
+                        <h3>ShaneCodes Tool Launcher</h3>
+                        <p>All tools in one script! Run directly from the web with one command.</p>
+                    </div>
+                    <div class="master-actions">
+                        <a href="tools/ShaneCodes_Launcher.ps1" download class="btn btn-download">⬇️ Download</a>
+                        <button class="btn btn-primary" onclick="copyMasterCommand()">📋 Copy Run Command</button>
+                    </div>
+                </div>
+                <div class="master-command">
+                    <code>iex (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/shanecodes-glitch/shanecodes-tech-hub/main/tools/ShaneCodes_Launcher.ps1" -UseBasicParsing).Content</code>
+                </div>
             </div>
         </div>
     </section>
@@ -150,7 +181,7 @@
                             <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                             GitHub
                         </a>
-                        <a href="mailto:shanecodes@proton.me" class="social-link">
+                        <a href="mailto:obinguarshane77@gmail.com" class="social-link">
                             <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                             Email
                         </a>
@@ -191,7 +222,7 @@
                     <div class="contact-card">
                         <div class="contact-icon">📧</div>
                         <h4>Email</h4>
-                        <p>shanecodes@proton.me</p>
+                        <p>obinguarshane77@gmail.com</p>
                         <small>Response within 24 hours</small>
                     </div>
                     <div class="contact-card">
@@ -272,14 +303,13 @@
                 <p>&copy; 2024-2025 ShaneCodes Technologies. All rights reserved.</p>
                 <div class="footer-social">
                     <a href="https://github.com/shanecodes-glitch" target="_blank">GitHub</a>
-                    <a href="mailto:shanecodes@proton.me">Email</a>
+                    <a href="mailto:obinguarshane77@gmail.com">Email</a>
                     <a href="https://shanecodes.tech" target="_blank">Website</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- ===== SCRIPTS ===== -->
     <script src="script.js"></script>
 </body>
 </html>
