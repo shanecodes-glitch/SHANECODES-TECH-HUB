@@ -20,4 +20,4 @@
 Copy and paste this in **PowerShell (as Administrator)**:
 
 ```powershell
-iex (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/ShaneCodes_Launcher.ps1" -UseBasicParsing).Content   
+irm https://raw.githubusercontent.com/shanecodes-glitch/shanecodes-tech-hub/main/tools/ShaneCodes_Launcher.ps1 | iex
