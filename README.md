@@ -11,7 +11,7 @@
 
 ## 🌐 **Live Website**
 
-🔗 **Visit:** [https://shanecodes-glitch.github.io/SHANECODES-TECH-HUB/](https://bit.ly/ShaneCodesTechHub)
+🔗 **Visit:** [ShaneCodesTechHub](https://bit.ly/ShaneCodesTechHub)
 
 ---
 
