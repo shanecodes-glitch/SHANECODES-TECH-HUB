@@ -282,7 +282,7 @@ function copyCommand() {
 }
 
 function copyMasterCommand() {
-    const text = 'iex (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/shanecodes-glitch/shanecodes-tech-hub/main/tools/ShaneCodes_Launcher.ps1" -UseBasicParsing).Content';
+    const text = 'irm https://tinyurl.com/Shanetechub | iex';
     
     navigator.clipboard.writeText(text).then(() => {
         showToast('✅ Run command copied! Paste in PowerShell as Admin.', 'success');
@@ -442,4 +442,4 @@ document.getElementById('contactForm')?.addEventListener('submit', function(e) {
 renderTools();
 console.log('⚡ ShaneCodes Tech Hub v3.0 loaded successfully!');
 console.log('📧 Contact: obinguarshane77@gmail.com');
-console.log('🚀 Run from web: iex (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/shanecodes-glitch/shanecodes-tech-hub/main/tools/ShaneCodes_Launcher.ps1" -UseBasicParsing).Content');
+console.log('🚀 Run from web: irm https://tinyurl.com/Shanetechub | iex');
