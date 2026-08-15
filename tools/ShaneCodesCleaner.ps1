@@ -1,122 +1,74 @@
-# ============================================================
-# SHANECODES CLEANER v1.0 (FIXED)
-# ============================================================
-# Deep clean with animated progress bar
-# Created by: ShaneCodes Technologies
-# ============================================================
+<#
+.SYNOPSIS
+    Deep clean with animated progress bar and detailed logging.
+.DESCRIPTION
+    Cleans temp files, browser cache, prefetch, and Windows update cache.
+.NOTES
+    Author: Shane Nichael Obinguar (ShaneCodes)
+    Version: 2.0 (Supercharged)
+#>
+
+#Requires -RunAsAdministrator
 
 if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-    Write-Host "ADMIN REQUIRED!" -ForegroundColor Red
-    Read-Host "Press Enter to exit"
+    Start-Process PowerShell -Verb RunAs -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`""
     exit
 }
 
-Clear-Host
-$Host.UI.RawUI.WindowTitle = "ShaneCodes Cleaner - Professional"
+$LogPath = "$env:TEMP\ShaneCodes_Cleaner_$(Get-Date -Format 'yyyyMMdd_HHmmss').log"
 
+function Write-Log {
+    param([string]$Message, [string]$Color = "White")
+    $Timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    $LogEntry = "[$Timestamp] $Message"
+    Add-Content -Path $LogPath -Value $LogEntry -ErrorAction SilentlyContinue
+    Write-Host $LogEntry -ForegroundColor $Color
+}
+
+Clear-Host
 Write-Host @"
 
-    ███████╗██╗  ██╗ █████╗ ███╗   ██╗███████╗ ██████╗ ██████╗ ██████╗ ███████╗
-    ██╔════╝██║  ██║██╔══██╗████╗  ██║██╔════╝██╔════╝██╔═══██╗██╔══██╗██╔════╝
-    ███████╗███████║███████║██╔██╗ ██║█████╗  ██║     ██║   ██║██████╔╝███████╗
-    ╚════██║██╔══██║██╔══██║██║╚██╗██║██╔══╝  ██║     ██║   ██║██╔══██╗╚════██║
-    ███████║██║  ██║██║  ██║██║ ╚████║███████╗╚██████╗╚██████╔╝██║  ██║███████║
-    ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
+============================================================
+    SHANECODES CLEANER v2.0
+============================================================
 
 "@ -ForegroundColor Cyan
 
-Write-Host "                    DEEP CLEANER v1.0" -ForegroundColor Yellow
-Write-Host ""
+Write-Log "Starting deep clean..." "Yellow"
 
-# ============================================================
-# ANIMATED PROGRESS
-# ============================================================
-function Show-Progress {
-    param($Message, $Duration = 2)
-
-    Write-Host "  $Message" -ForegroundColor White
-    Write-Host "  " -NoNewline
-
-    $Chars = @('▓', '▒', '░')
-    $Colors = @('Red', 'Yellow', 'Green', 'Cyan', 'Magenta')
-
-    for ($i = 0; $i -lt 40; $i++) {
-        $Color = $Colors[$i % $Colors.Length]
-        $Char = $Chars[$i % $Chars.Length]
-        Write-Host $Char -NoNewline -ForegroundColor $Color
-        Start-Sleep -Milliseconds ($Duration * 20)
-    }
-    Write-Host " [OK]" -ForegroundColor Green
-}
-
-# ============================================================
-# CLEANING FUNCTION (FIXED: no colon in string)
-# ============================================================
 function Clean-Path {
     param($Path, $Description)
-
     if (Test-Path $Path) {
-        $Before = (Get-ChildItem -Path $Path -Recurse -File -ErrorAction SilentlyContinue | 
-                   Measure-Object -Property Length -Sum).Sum
+        $Before = (Get-ChildItem -Path $Path -Recurse -File -ErrorAction SilentlyContinue | Measure-Object -Property Length -Sum).Sum
         Remove-Item -Path "$Path\*" -Recurse -Force -ErrorAction SilentlyContinue
-        $After = (Get-ChildItem -Path $Path -Recurse -File -ErrorAction SilentlyContinue | 
-                  Measure-Object -Property Length -Sum).Sum
+        $After = (Get-ChildItem -Path $Path -Recurse -File -ErrorAction SilentlyContinue | Measure-Object -Property Length -Sum).Sum
         $Cleaned = [math]::Round(($Before - $After) / 1MB, 1)
-        Write-Host ("    [OK] " + $Description + ": " + $Cleaned + " MB cleaned") -ForegroundColor Green
+        Write-Log "$Description: $Cleaned MB cleaned" "Green"
         return $Cleaned
     }
     return 0
 }
 
-# ============================================================
-# MAIN CLEANING PROCESS
-# ============================================================
-Write-Host "SCANNING FOR CLEANABLE FILES..." -ForegroundColor Yellow
-Write-Host ""
-
 $TotalCleaned = 0
 
-# 1. Windows Temp
-Show-Progress -Message "Cleaning Windows Temp folder..." -Duration 1
-$TotalCleaned += Clean-Path -Path "$env:WINDIR\Temp" -Description "Windows Temp"
-
-# 2. User Temp
-Show-Progress -Message "Cleaning User Temp folder..." -Duration 1
-$TotalCleaned += Clean-Path -Path "$env:TEMP" -Description "User Temp"
-
-# 3. Prefetch
-Show-Progress -Message "Cleaning Prefetch folder..." -Duration 1
-$TotalCleaned += Clean-Path -Path "$env:WINDIR\Prefetch" -Description "Prefetch"
-
-# 4. Browser Cache
-Show-Progress -Message "Cleaning browser cache..." -Duration 1
-$Browsers = @(
-    "$env:LOCALAPPDATA\Google\Chrome\User Data\Default\Cache",
-    "$env:LOCALAPPDATA\Google\Chrome\User Data\Default\Code Cache",
-    "$env:APPDATA\Microsoft\Edge\User Data\Default\Cache",
-    "$env:LOCALAPPDATA\Mozilla\Firefox\Profiles\*\cache2"
+$Paths = @(
+    @{Path = "$env:WINDIR\Temp"; Desc = "Windows Temp"},
+    @{Path = "$env:TEMP"; Desc = "User Temp"},
+    @{Path = "$env:WINDIR\Prefetch"; Desc = "Prefetch"},
+    @{Path = "$env:LOCALAPPDATA\Google\Chrome\User Data\Default\Cache"; Desc = "Chrome Cache"},
+    @{Path = "$env:APPDATA\Microsoft\Edge\User Data\Default\Cache"; Desc = "Edge Cache"},
+    @{Path = "$env:WINDIR\SoftwareDistribution\Download"; Desc = "Update Cache"}
 )
-foreach ($Browser in $Browsers) {
-    $TotalCleaned += Clean-Path -Path $Browser -Description "Browser cache"
+
+$Progress = 0
+foreach ($Item in $Paths) {
+    $Progress++
+    Write-Progress -Activity "Cleaning $($Item.Desc)" -PercentComplete (($Progress / $Paths.Count) * 100)
+    $TotalCleaned += Clean-Path -Path $Item.Path -Description $Item.Desc
 }
 
-# 5. Recycle Bin
-Show-Progress -Message "Emptying Recycle Bin..." -Duration 1
 Clear-RecycleBin -Force -ErrorAction SilentlyContinue
-Write-Host "    [OK] Recycle Bin emptied" -ForegroundColor Green
-
-# 6. Windows Update Cache
-Show-Progress -Message "Cleaning Windows Update cache..." -Duration 2
-$TotalCleaned += Clean-Path -Path "$env:WINDIR\SoftwareDistribution\Download" -Description "Update cache"
-
-# ============================================================
-# RESULTS
-# ============================================================
-Write-Host ""
-Write-Host "============================================================" -ForegroundColor Cyan
-Write-Host "                     CLEANING COMPLETE!" -ForegroundColor Cyan
-Write-Host "============================================================" -ForegroundColor Cyan
-Write-Host "  Total space cleaned: $([math]::Round($TotalCleaned, 1)) MB" -ForegroundColor Green
-Write-Host "============================================================" -ForegroundColor Cyan
+Write-Log "Recycle Bin emptied" "Green"
+Write-Log "Total space cleaned: $([math]::Round($TotalCleaned, 1)) MB" "Cyan"
 
 Read-Host "`nPress Enter to exit"
