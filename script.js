@@ -3,7 +3,7 @@
 // ============================================================
 
 // ============================================================
-// TOOL DATA
+// TOOL DATA - UPDATED WITH ACTIVATION FIXER
 // ============================================================
 const tools = [
     {
@@ -105,6 +105,17 @@ const tools = [
         tags: ['Security', 'Delete'],
         version: 'v1.0',
         file: 'tools/FileShredder.ps1'
+    },
+    // ===== NEW: ACTIVATION FIXER =====
+    {
+        id: 'activation-fixer',
+        name: 'Windows Activation Fixer',
+        icon: '🔑',
+        description: 'Fixes Windows activation issues. Downloads and runs the repair tool automatically.',
+        category: 'repair',
+        tags: ['Activation', 'License', 'Fix'],
+        version: 'v3.0',
+        file: 'tools/Activation_Fixer.ps1'
     }
 ];
 
