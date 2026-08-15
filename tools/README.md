@@ -18,11 +18,10 @@ Welcome to the official ShaneCodes tools collection! All tools are designed to b
 | 8 | [Startup Manager Pro](StartupManagerPro.ps1) | v1.0 | Utility |
 | 9 | [Network Refresh Tool](NetworkRefreshTool.ps1) | v1.0 | Repair |
 | 10 | [File Shredder](FileShredder.ps1) | v1.0 | Security |
-| 11 | [Windows Activation Fixer](Activation_Fixer.ps1) | v3.0 | Repair |
 
 ---
 
 ## 🚀 **Run All Tools from Web**
 
 ```powershell
-irm https://tinyurl.com/shanetechub | iex
+iex (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/ShaneCodes_Launcher.ps1" -UseBasicParsing).Content

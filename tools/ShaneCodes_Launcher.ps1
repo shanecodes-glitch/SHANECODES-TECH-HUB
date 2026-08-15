@@ -1,31 +1,30 @@
 # ============================================================
-# SHANECODES TOOL LAUNCHER v3.0 (FUNNY EDITION)
+# SHANECODES TOOL LAUNCHER v3.0 (FIXED)
 # ============================================================
-# eto na naman tayo, nag-aayos ng windows na di naman nasira
-# run mo lang to, sabay nood ng netflix habang naglo-load
+# Master script containing all ShaneCodes tools
+# Run directly from web: 
+#   iex (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/ShaneCodes_Launcher.ps1" -UseBasicParsing).Content
 # ============================================================
-# gawa ni: shane nichael obinguar (shanecodes)
+# Created by: Shane Nichael Obinguar (ShaneCodes)
 # ============================================================
-# © 2024-2025 shanecodes technologies. lahat ng karapatan ay
-# nakalaan, pero pwede mong gamitin basta wag kang magreklamo
+# © 2024-2025 ShaneCodes Technologies. All rights reserved.
 # ============================================================
 
 Clear-Host
-$Host.UI.RawUI.WindowTitle = "⚡ shanecodes tool launcher v3.0 - chill lang"
+$Host.UI.RawUI.WindowTitle = "⚡ ShaneCodes Tool Launcher v3.0"
 
 # ============================================================
-# CONFIGURATION - eto yung mga settings na di mo na dapat galawin
-# pero sige, tingnan mo lang kung gusto mo
+# CONFIGURATION
 # ============================================================
-$script:Author = "shane nichael obinguar"  # yan ang pangalan ko, wag mong nakawin
-$script:Contact = "obinguarshane77@gmail.com"  # email ko 'to, wag kang mag-spam
-$script:Website = "https://shanecodes.tech"  # website ko 'to, bisitahin mo
-$script:Company = "shanecodes technologies"  # company name, pang-bongga
-$script:Version = "3.0"  # version number, parang software ng mayaman
-$script:Copyright = "© 2024-2025 shanecodes technologies. bawal kopyahin, pero kung gusto mo, go lang"  # copyright, para lang may mailagay
+$script:Author = "Shane Nichael Obinguar"
+$script:Contact = "obinguarshane77@gmail.com"
+$script:Website = "https://shanecodes.tech"
+$script:Company = "ShaneCodes Technologies"
+$script:Version = "3.0"
+$script:Copyright = "© 2024-2025 ShaneCodes Technologies. All rights reserved."
 
 # ============================================================
-# ASCII BANNER - eto yung pampaganda, para kunwari professional
+# ASCII BANNER
 # ============================================================
 Write-Host @"
 
@@ -39,57 +38,55 @@ Write-Host @"
 ║    ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝ ╚═════╝     ║
 ║                                                              ║
 ║              TOOL LAUNCHER v$script:Version                 ║
-║           gawa ni: shanecodes technologies                 ║
-║        "nag-aayos ng pc habang kumakain ng pancit canton"   ║
+║           Created by: ShaneCodes Technologies              ║
 ╚══════════════════════════════════════════════════════════════╝
 
 "@ -ForegroundColor Cyan
 
-Write-Host "  📋 pumili ka ng tool, pero wag kang magulo:" -ForegroundColor Yellow
+Write-Host "  📋 Select a tool to run:" -ForegroundColor Yellow
 Write-Host ""
 
 # ============================================================
-# TOOL MENU - eto yung listahan ng mga pampaganda ng pc mo
+# TOOL MENU
 # ============================================================
 $Menu = @"
   ┌────┬────────────────────────────────────────────────────────────┐
-  │ #  │ pangalan ng tool                                          │
+  │ #  │ Tool Name                                                  │
   ├────┼────────────────────────────────────────────────────────────┤
-  │ 1  │ 🔧 smart pc optimizer - parang gym para sa pc mo         │
-  │ 2  │ 🧹 shanecodes cleaner - mas malinis pa sa kwarto mo      │
-  │ 3  │ ⚡ quick fix wizard - parang salamangkero ng windows      │
-  │ 4  │ 💾 system restore manager - parang time machine           │
-  │ 5  │ 🚀 boot speed analyzer - bilisan mo naman mag-boot       │
-  │ 6  │ 🛡️ privacy guard - para hindi ka ma-stalk                │
-  │ 7  │ 🔋 battery health checker - para sa laptop mong palaging │
-  │ 8  │ ⚙️ startup manager pro - tanggalin ang mga bagal          │
-  │ 9  │ 🌐 network refresh tool - parang restart ng internet     │
-  │ 10 │ 🗑️ file shredder - parang basurahan, pero permanent     │
-  │ 11 │ 🔑 windows activation fixer - para ma-activate ulit      │
+  │ 1  │ 🔧 Smart PC Optimizer                                      │
+  │ 2  │ 🧹 ShaneCodes Cleaner                                      │
+  │ 3  │ ⚡ Quick Fix Wizard                                        │
+  │ 4  │ 💾 System Restore Manager                                  │
+  │ 5  │ 🚀 Boot Speed Analyzer                                     │
+  │ 6  │ 🛡️ Privacy Guard                                           │
+  │ 7  │ 🔋 Battery Health Checker                                  │
+  │ 8  │ ⚙️ Startup Manager Pro                                     │
+  │ 9  │ 🌐 Network Refresh Tool                                    │
+  │ 10 │ 🗑️ File Shredder                                           │
   ├────┼────────────────────────────────────────────────────────────┤
-  │ 12 │ ℹ️ about this project - bakit mo ba 'to ginagamit?       │
-  │ 13 │ 📧 contact support - kung may problema, wag kang mag-alala│
-  │ 14 │ 🚀 run all tools - sabay-sabay, parang buffet            │
-  │ 0  │ ❌ exit - mag-muni-muni ka muna                           │
+  │ 11 │ ℹ️ About This Project                                      │
+  │ 12 │ 📧 Contact Support                                         │
+  │ 13 │ 🚀 Run All Tools (Sequential)                              │
+  │ 0  │ ❌ Exit                                                    │
   └────┴────────────────────────────────────────────────────────────┘
 "@
 
 Write-Host $Menu -ForegroundColor White
 
 # ============================================================
-# TOOL FUNCTIONS - eto na yung mga totoong trabaho
+# TOOL FUNCTIONS
 # ============================================================
 
 # -----------------------------------------------------------------
-# TOOL 1: Smart PC Optimizer - parang doctor ng pc mo
+# TOOL 1: Smart PC Optimizer
 # -----------------------------------------------------------------
 function Invoke-SmartPCOptimizer {
-    Write-Host "`n🔧 nag-aactivate ng smart pc optimizer..." -ForegroundColor Cyan
+    Write-Host "`n🔧 Starting Smart PC Optimizer..." -ForegroundColor Cyan
 
-    # Admin check - kailangan admin, parang bouncer sa club
+    # Admin check
     if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-        Write-Host "🚨 kelangan admin! parang sa trabaho, may boss" -ForegroundColor Red
-        Read-Host "press enter para magpatuloy"
+        Write-Host "🚨 ADMIN REQUIRED! Please run as Administrator." -ForegroundColor Red
+        Read-Host "Press Enter to continue"
         return
     }
 
@@ -103,18 +100,18 @@ function Invoke-SmartPCOptimizer {
         }
     }
     if ($TotalTempSize -gt 100MB) {
-        $FoundIssues += "🧹 $([math]::Round($TotalTempSize/1MB,0)) MB ng basura ang nakita"
+        $FoundIssues += "🧹 $([math]::Round($TotalTempSize/1MB,0)) MB of temp files found"
     }
 
     $Disk = Get-CimInstance -ClassName Win32_LogicalDisk -Filter "DeviceID='C:'"
     $FreePercent = [math]::Round(($Disk.FreeSpace / $Disk.Size) * 100, 1)
     if ($FreePercent -lt 15) {
-        $FoundIssues += "💾 ang sikip na ng c: drive mo, $FreePercent% na lang ang natira"
+        $FoundIssues += "💾 Low disk space: $FreePercent% free"
     }
 
     $StartupItems = Get-CimInstance -ClassName Win32_StartupCommand | Where-Object { $_.Location -like "*Run*" }
     if ($StartupItems.Count -gt 5) {
-        $FoundIssues += "🚀 ang daming startup programs, $($StartupItems.Count) ang bumubukas"
+        $FoundIssues += "🚀 $($StartupItems.Count) startup programs running"
     }
 
     $Browsers = @("$env:LOCALAPPDATA\Google\Chrome\User Data\Default\Cache", "$env:APPDATA\Microsoft\Edge\User Data\Default\Cache")
@@ -126,43 +123,43 @@ function Invoke-SmartPCOptimizer {
         }
     }
     if ($CacheSize -gt 500MB) {
-        $FoundIssues += "🌐 ang daming cache ng browser mo, $([math]::Round($CacheSize/1MB,0)) MB"
+        $FoundIssues += "🌐 $([math]::Round($CacheSize/1MB,0)) MB of browser cache"
     }
 
-    Write-Host "`n📋 RESULTA NG SCAN:" -ForegroundColor Yellow
+    Write-Host "`n📋 SCAN RESULTS:" -ForegroundColor Yellow
     if ($FoundIssues.Count -eq 0) {
-        Write-Host "  ✅ malinis ang pc mo! parang bagong ligo" -ForegroundColor Green
+        Write-Host "  ✅ YOUR SYSTEM IS HEALTHY! No issues found." -ForegroundColor Green
     } else {
-        Write-Host "  ⚠️ may $($FoundIssues.Count) na issue na dapat ayusin:" -ForegroundColor Yellow
+        Write-Host "  ⚠️ Found $($FoundIssues.Count) issues:" -ForegroundColor Yellow
         foreach ($Issue in $FoundIssues) {
             Write-Host "    $Issue" -ForegroundColor White
         }
-        $Choice = Read-Host "`n❓ gusto mo bang ayusin 'to? (Y/N)"
+        $Choice = Read-Host "`n❓ Do you want to fix these issues? (Y/N)"
         if ($Choice -eq "Y" -or $Choice -eq "y") {
-            Write-Host "`n🔧 inaayos na ang mga issue..." -ForegroundColor Green
+            Write-Host "`n🔧 FIXING ISSUES..." -ForegroundColor Green
             foreach ($Path in $TempPaths) {
                 if (Test-Path $Path) {
                     Remove-Item -Path "$Path\*" -Recurse -Force -ErrorAction SilentlyContinue
-                    Write-Host "  ✅ nilinis: $Path" -ForegroundColor Green
+                    Write-Host "  ✅ Cleaned: $Path" -ForegroundColor Green
                 }
             }
             Clear-RecycleBin -Force -ErrorAction SilentlyContinue
-            Write-Host "  ✅ na-empty na ang recycle bin" -ForegroundColor Green
-            Write-Host "`n✅ tapos na ang optimization!" -ForegroundColor Green
+            Write-Host "  ✅ Recycle Bin emptied" -ForegroundColor Green
+            Write-Host "`n✅ Optimization complete!" -ForegroundColor Green
         }
     }
-    Read-Host "`npress enter para magpatuloy"
+    Read-Host "`nPress Enter to continue"
 }
 
 # -----------------------------------------------------------------
-# TOOL 2: ShaneCodes Cleaner - mas malinis pa sa kwarto mo
+# TOOL 2: ShaneCodes Cleaner
 # -----------------------------------------------------------------
 function Invoke-ShaneCodesCleaner {
-    Write-Host "`n🧹 nag-aactivate ng shanecodes cleaner..." -ForegroundColor Cyan
+    Write-Host "`n🧹 Starting ShaneCodes Cleaner..." -ForegroundColor Cyan
 
     if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-        Write-Host "🚨 kelangan admin! parang sa school, may principal" -ForegroundColor Red
-        Read-Host "press enter para magpatuloy"
+        Write-Host "🚨 ADMIN REQUIRED! Please run as Administrator." -ForegroundColor Red
+        Read-Host "Press Enter to continue"
         return
     }
 
@@ -183,68 +180,68 @@ function Invoke-ShaneCodesCleaner {
             Remove-Item -Path "$Path\*" -Recurse -Force -ErrorAction SilentlyContinue
             $After = (Get-ChildItem -Path $Path -Recurse -File -ErrorAction SilentlyContinue | Measure-Object -Property Length -Sum).Sum
             $Cleaned = [math]::Round(($Before - $After) / 1MB, 1)
-            Write-Host ("    ✅ " + $Description + ": " + $Cleaned + " MB ang nalinis") -ForegroundColor Green
+            Write-Host ("    ✅ " + $Description + ": " + $Cleaned + " MB cleaned") -ForegroundColor Green
             return $Cleaned
         }
         return 0
     }
 
-    Write-Host "`n🔍 naghahanap ng mga pwedeng linisin..." -ForegroundColor Yellow
+    Write-Host "`n🔍 SCANNING FOR CLEANABLE FILES..." -ForegroundColor Yellow
     $TotalCleaned = 0
 
-    Show-Progress -Message "nililinis ang windows temp folder..." -Duration 1
-    $TotalCleaned += Clean-Path -Path "$env:WINDIR\Temp" -Description "windows temp"
+    Show-Progress -Message "Cleaning Windows Temp folder..." -Duration 1
+    $TotalCleaned += Clean-Path -Path "$env:WINDIR\Temp" -Description "Windows Temp"
 
-    Show-Progress -Message "nililinis ang user temp folder..." -Duration 1
-    $TotalCleaned += Clean-Path -Path "$env:TEMP" -Description "user temp"
+    Show-Progress -Message "Cleaning User Temp folder..." -Duration 1
+    $TotalCleaned += Clean-Path -Path "$env:TEMP" -Description "User Temp"
 
-    Show-Progress -Message "nililinis ang prefetch folder..." -Duration 1
-    $TotalCleaned += Clean-Path -Path "$env:WINDIR\Prefetch" -Description "prefetch"
+    Show-Progress -Message "Cleaning Prefetch folder..." -Duration 1
+    $TotalCleaned += Clean-Path -Path "$env:WINDIR\Prefetch" -Description "Prefetch"
 
-    Show-Progress -Message "nililinis ang browser cache..." -Duration 1
+    Show-Progress -Message "Cleaning browser cache..." -Duration 1
     $Browsers = @("$env:LOCALAPPDATA\Google\Chrome\User Data\Default\Cache", "$env:APPDATA\Microsoft\Edge\User Data\Default\Cache")
     foreach ($Browser in $Browsers) {
-        $TotalCleaned += Clean-Path -Path $Browser -Description "browser cache"
+        $TotalCleaned += Clean-Path -Path $Browser -Description "Browser cache"
     }
 
-    Show-Progress -Message "ina-empty ang recycle bin..." -Duration 1
+    Show-Progress -Message "Emptying Recycle Bin..." -Duration 1
     Clear-RecycleBin -Force -ErrorAction SilentlyContinue
-    Write-Host "    ✅ na-empty na ang recycle bin" -ForegroundColor Green
+    Write-Host "    ✅ Recycle Bin emptied" -ForegroundColor Green
 
-    Show-Progress -Message "nililinis ang windows update cache..." -Duration 2
-    $TotalCleaned += Clean-Path -Path "$env:WINDIR\SoftwareDistribution\Download" -Description "update cache"
+    Show-Progress -Message "Cleaning Windows Update cache..." -Duration 2
+    $TotalCleaned += Clean-Path -Path "$env:WINDIR\SoftwareDistribution\Download" -Description "Update cache"
 
-    Write-Host "`n✅ tapos na ang paglilinis!" -ForegroundColor Green
-    Write-Host "  🧹 total space na nalinis: $([math]::Round($TotalCleaned, 1)) MB" -ForegroundColor Cyan
-    Read-Host "`npress enter para magpatuloy"
+    Write-Host "`n✅ CLEANING COMPLETE!" -ForegroundColor Green
+    Write-Host "  🧹 Total space cleaned: $([math]::Round($TotalCleaned, 1)) MB" -ForegroundColor Cyan
+    Read-Host "`nPress Enter to continue"
 }
 
 # -----------------------------------------------------------------
-# TOOL 3: Quick Fix Wizard - parang magic, pero totoo
+# TOOL 3: Quick Fix Wizard
 # -----------------------------------------------------------------
 function Invoke-QuickFixWizard {
-    Write-Host "`n⚡ nag-aactivate ng quick fix wizard..." -ForegroundColor Cyan
+    Write-Host "`n⚡ Starting Quick Fix Wizard..." -ForegroundColor Cyan
 
     if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-        Write-Host "🚨 kelangan admin! parang sa mall, may guard" -ForegroundColor Red
-        Read-Host "press enter para magpatuloy"
+        Write-Host "🚨 ADMIN REQUIRED! Please run as Administrator." -ForegroundColor Red
+        Read-Host "Press Enter to continue"
         return
     }
 
-    Write-Host "`n📋 pumili ng gustong ayusin:" -ForegroundColor Yellow
-    Write-Host "  [1] 🔄 i-reset ang network adapters"
-    Write-Host "  [2] 🧹 i-clear ang dns cache"
-    Write-Host "  [3] 🔧 ayusin ang windows update"
-    Write-Host "  [4] 🚀 pabilisin ang system performance"
-    Write-Host "  [5] 🌐 i-reset ang internet settings"
-    Write-Host "  [6] 💻 ayusin ang mga broken shortcuts"
-    Write-Host "  [7] 🔑 i-reset ang windows activation"
-    Write-Host "  [8] 🛡️ ayusin ang windows security"
-    Write-Host "  [9] ⚡ gawin lahat ng fixes"
-    Write-Host "  [0] 🔙 balik sa main menu"
+    Write-Host "`n📋 SELECT A FIX:" -ForegroundColor Yellow
+    Write-Host "  [1] 🔄 Reset Network Adapters"
+    Write-Host "  [2] 🧹 Clear DNS Cache"
+    Write-Host "  [3] 🔧 Fix Windows Update"
+    Write-Host "  [4] 🚀 Boost System Performance"
+    Write-Host "  [5] 🌐 Reset Internet Settings"
+    Write-Host "  [6] 💻 Fix Broken Shortcuts"
+    Write-Host "  [7] 🔑 Reset Windows Activation"
+    Write-Host "  [8] 🛡️ Fix Windows Security"
+    Write-Host "  [9] ⚡ Run All Fixes"
+    Write-Host "  [0] 🔙 Back to Main Menu"
     Write-Host ""
 
-    $Choice = Read-Host "pumili ng number (0-9)"
+    $Choice = Read-Host "Enter your choice (0-9)"
 
     function Show-FixProgress {
         param($Message, $Duration = 1)
@@ -267,62 +264,62 @@ function Invoke-QuickFixWizard {
     }
 
     function Fix-Network {
-        Write-Host "`n🔧 inaayos ang network..." -ForegroundColor Cyan
-        Show-FixProgress -Message "ni-reset ang winsock" -Duration 1
+        Write-Host "`n🔧 Fixing Network..." -ForegroundColor Cyan
+        Show-FixProgress -Message "Resetting Winsock" -Duration 1
         netsh winsock reset
-        Show-FixProgress -Message "ni-reset ang ip stack" -Duration 1
+        Show-FixProgress -Message "Resetting IP Stack" -Duration 1
         netsh int ip reset
-        Show-FixProgress -Message "ni-release ang ip" -Duration 1
+        Show-FixProgress -Message "Releasing IP" -Duration 1
         ipconfig /release
-        Show-FixProgress -Message "ni-renew ang ip" -Duration 1
+        Show-FixProgress -Message "Renewing IP" -Duration 1
         ipconfig /renew
-        Show-FixResult -Message "tapos na ang network reset"
+        Show-FixResult -Message "Network reset complete"
     }
 
     function Fix-DNS {
-        Write-Host "`n🧹 nililinis ang dns..." -ForegroundColor Cyan
-        Show-FixProgress -Message "ni-flush ang dns cache" -Duration 1
+        Write-Host "`n🧹 Clearing DNS..." -ForegroundColor Cyan
+        Show-FixProgress -Message "Flushing DNS Cache" -Duration 1
         ipconfig /flushdns
-        Show-FixProgress -Message "ni-register ang dns" -Duration 1
+        Show-FixProgress -Message "Registering DNS" -Duration 1
         ipconfig /registerdns
-        Show-FixResult -Message "na-clear na ang dns cache"
+        Show-FixResult -Message "DNS cache cleared"
     }
 
     function Fix-WindowsUpdate {
-        Write-Host "`n🔧 inaayos ang windows update..." -ForegroundColor Cyan
-        Show-FixProgress -Message "pinapatay ang update services" -Duration 1
+        Write-Host "`n🔧 Fixing Windows Update..." -ForegroundColor Cyan
+        Show-FixProgress -Message "Stopping update services" -Duration 1
         Stop-Service -Name wuauserv, bits, cryptSvc -Force -ErrorAction SilentlyContinue
-        Show-FixProgress -Message "pinalitan ang pangalan ng cache folders" -Duration 2
+        Show-FixProgress -Message "Renaming cache folders" -Duration 2
         if (Test-Path "$env:WINDIR\SoftwareDistribution") {
             Remove-Item "$env:WINDIR\SoftwareDistribution.old" -Recurse -Force -ErrorAction SilentlyContinue
             Rename-Item "$env:WINDIR\SoftwareDistribution" "SoftwareDistribution.old" -ErrorAction SilentlyContinue
         }
-        Show-FixProgress -Message "binubuksan ang update services" -Duration 1
+        Show-FixProgress -Message "Starting update services" -Duration 1
         Start-Service -Name wuauserv, bits, cryptSvc -ErrorAction SilentlyContinue
-        Show-FixResult -Message "tapos na ang windows update reset"
+        Show-FixResult -Message "Windows Update reset complete"
     }
 
     function Fix-Performance {
-        Write-Host "`n🚀 pinapabilis ang performance..." -ForegroundColor Cyan
-        Show-FixProgress -Message "nililinis ang temp files" -Duration 2
+        Write-Host "`n🚀 Boosting Performance..." -ForegroundColor Cyan
+        Show-FixProgress -Message "Cleaning temp files" -Duration 2
         Remove-Item "$env:TEMP\*" -Recurse -Force -ErrorAction SilentlyContinue
-        Show-FixProgress -Message "ina-optimize ang visual effects" -Duration 1
-        Show-FixProgress -Message "pinapatay ang unnecessary services" -Duration 2
-        Show-FixResult -Message "tapos na ang performance boost"
+        Show-FixProgress -Message "Optimizing visual effects" -Duration 1
+        Show-FixProgress -Message "Disabling unnecessary services" -Duration 2
+        Show-FixResult -Message "Performance boost complete"
     }
 
     function Fix-Internet {
-        Write-Host "`n🌐 ni-reset ang internet settings..." -ForegroundColor Cyan
-        Show-FixProgress -Message "ni-reset ang ie settings" -Duration 1
-        Show-FixProgress -Message "ni-clear ang ssl state" -Duration 1
-        Show-FixProgress -Message "ni-reset ang proxy settings" -Duration 1
+        Write-Host "`n🌐 Resetting Internet Settings..." -ForegroundColor Cyan
+        Show-FixProgress -Message "Resetting IE settings" -Duration 1
+        Show-FixProgress -Message "Clearing SSL State" -Duration 1
+        Show-FixProgress -Message "Resetting proxy settings" -Duration 1
         netsh winhttp reset proxy
-        Show-FixResult -Message "tapos na ang internet settings reset"
+        Show-FixResult -Message "Internet settings reset"
     }
 
     function Fix-Shortcuts {
-        Write-Host "`n💻 inaayos ang broken shortcuts..." -ForegroundColor Cyan
-        Show-FixProgress -Message "nag-scan ng broken shortcuts" -Duration 2
+        Write-Host "`n💻 Fixing Broken Shortcuts..." -ForegroundColor Cyan
+        Show-FixProgress -Message "Scanning for broken shortcuts" -Duration 2
         $Desktop = [Environment]::GetFolderPath("Desktop")
         $Files = Get-ChildItem -Path $Desktop -Filter "*.lnk" -File
         $Fixed = 0
@@ -336,26 +333,26 @@ function Invoke-QuickFixWizard {
                 }
             } catch {}
         }
-        Show-FixResult -Message "naayos ang $Fixed broken shortcuts"
+        Show-FixResult -Message "Fixed $Fixed broken shortcuts"
     }
 
     function Fix-Activation {
-        Write-Host "`n🔑 ni-reset ang windows activation..." -ForegroundColor Cyan
-        Show-FixProgress -Message "ni-reset ang licensing status" -Duration 2
+        Write-Host "`n🔑 Resetting Windows Activation..." -ForegroundColor Cyan
+        Show-FixProgress -Message "Resetting licensing status" -Duration 2
         cscript //nologo $env:WINDIR\system32\slmgr.vbs /rearm
-        Show-FixProgress -Message "tinanggal ang current license" -Duration 2
+        Show-FixProgress -Message "Removing current license" -Duration 2
         cscript //nologo $env:WINDIR\system32\slmgr.vbs /upk
-        Show-FixProgress -Message "ni-reset ang licensing cache" -Duration 2
+        Show-FixProgress -Message "Resetting licensing cache" -Duration 2
         cscript //nologo $env:WINDIR\system32\slmgr.vbs /rilc
-        Show-FixResult -Message "tapos na ang activation reset"
+        Show-FixResult -Message "Activation reset complete"
     }
 
     function Fix-Security {
-        Write-Host "`n🛡️ inaayos ang windows security..." -ForegroundColor Cyan
-        Show-FixProgress -Message "ni-reset ang security policies" -Duration 2
-        Show-FixProgress -Message "chine-check ang windows defender" -Duration 2
-        Show-FixProgress -Message "inaayos ang uac settings" -Duration 1
-        Show-FixResult -Message "tapos na ang security settings reset"
+        Write-Host "`n🛡️ Fixing Windows Security..." -ForegroundColor Cyan
+        Show-FixProgress -Message "Resetting security policies" -Duration 2
+        Show-FixProgress -Message "Checking Windows Defender" -Duration 2
+        Show-FixProgress -Message "Fixing UAC settings" -Duration 1
+        Show-FixResult -Message "Security settings reset"
     }
 
     switch ($Choice) {
@@ -376,127 +373,127 @@ function Invoke-QuickFixWizard {
             Fix-Shortcuts
             Fix-Activation
             Fix-Security
-            Write-Host "`n✅ tapos na lahat ng fixes!" -ForegroundColor Green
+            Write-Host "`n✅ All fixes completed!" -ForegroundColor Green
         }
         "0" { return }
-        default { Write-Host "mali ang pinili mo!" -ForegroundColor Red }
+        default { Write-Host "Invalid choice!" -ForegroundColor Red }
     }
-    Read-Host "`npress enter para magpatuloy"
+    Read-Host "`nPress Enter to continue"
 }
 
 # -----------------------------------------------------------------
-# TOOL 4: System Restore Manager - parang time machine
+# TOOL 4: System Restore Manager
 # -----------------------------------------------------------------
 function Invoke-SystemRestoreManager {
-    Write-Host "`n💾 nag-aactivate ng system restore manager..." -ForegroundColor Cyan
+    Write-Host "`n💾 Starting System Restore Manager..." -ForegroundColor Cyan
 
     if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-        Write-Host "🚨 kelangan admin! parang sa trabaho, may manager" -ForegroundColor Red
-        Read-Host "press enter para magpatuloy"
+        Write-Host "🚨 ADMIN REQUIRED! Please run as Administrator." -ForegroundColor Red
+        Read-Host "Press Enter to continue"
         return
     }
 
-    Write-Host "`n📋 mga options:" -ForegroundColor Yellow
-    Write-Host "  [1] gumawa ng restore point"
-    Write-Host "  [2] tingnan ang mga restore points"
-    Write-Host "  [3] i-restore ang system"
-    Write-Host "  [0] balik sa main menu"
+    Write-Host "`n📋 OPTIONS:" -ForegroundColor Yellow
+    Write-Host "  [1] Create Restore Point"
+    Write-Host "  [2] List Restore Points"
+    Write-Host "  [3] Restore System"
+    Write-Host "  [0] Back to Main Menu"
     Write-Host ""
 
-    $Choice = Read-Host "pumili ng number (0-3)"
+    $Choice = Read-Host "Enter your choice (0-3)"
 
     switch ($Choice) {
         "1" {
-            $Desc = Read-Host "ilagay ang description ng restore point"
+            $Desc = Read-Host "Enter description for restore point"
             try {
                 Checkpoint-Computer -Description $Desc -RestorePointType MODIFY_SETTINGS
-                Write-Host "✅ matagumpay na nagawa ang restore point!" -ForegroundColor Green
+                Write-Host "✅ Restore point created successfully!" -ForegroundColor Green
             } catch {
-                Write-Host "❌ nabigo ang paggawa ng restore point: $_" -ForegroundColor Red
+                Write-Host "❌ Failed to create restore point: $_" -ForegroundColor Red
             }
         }
         "2" {
             try {
                 $Points = Get-ComputerRestorePoint
                 if ($Points) {
-                    Write-Host "`n📋 MGA RESTORE POINTS:" -ForegroundColor Cyan
+                    Write-Host "`n📋 RESTORE POINTS:" -ForegroundColor Cyan
                     $Points | Format-Table SequenceNumber, CreationTime, Description -AutoSize
                 } else {
-                    Write-Host "walang restore points na nakita." -ForegroundColor Yellow
+                    Write-Host "No restore points found." -ForegroundColor Yellow
                 }
             } catch {
-                Write-Host "❌ nabigo ang paglista ng restore points: $_" -ForegroundColor Red
+                Write-Host "❌ Failed to list restore points: $_" -ForegroundColor Red
             }
         }
         "3" {
             try {
                 $Points = Get-ComputerRestorePoint
                 if ($Points) {
-                    Write-Host "`n📋 available restore points:" -ForegroundColor Cyan
+                    Write-Host "`n📋 Available restore points:" -ForegroundColor Cyan
                     $Points | Format-Table SequenceNumber, CreationTime, Description -AutoSize
-                    $Seq = Read-Host "ilagay ang sequence number na gusto mong i-restore"
+                    $Seq = Read-Host "Enter Sequence Number to restore"
                     Restore-Computer -RestorePoint $Seq -Force
-                    Write-Host "✅ magre-restart ang system para ma-apply ang restore." -ForegroundColor Green
+                    Write-Host "✅ Restore initiated. System will restart." -ForegroundColor Green
                 } else {
-                    Write-Host "walang available na restore points." -ForegroundColor Yellow
+                    Write-Host "No restore points available." -ForegroundColor Yellow
                 }
             } catch {
-                Write-Host "❌ nabigo ang pag-restore: $_" -ForegroundColor Red
+                Write-Host "❌ Failed to restore: $_" -ForegroundColor Red
             }
         }
         "0" { return }
-        default { Write-Host "mali ang pinili mo!" -ForegroundColor Red }
+        default { Write-Host "Invalid choice!" -ForegroundColor Red }
     }
-    Read-Host "`npress enter para magpatuloy"
+    Read-Host "`nPress Enter to continue"
 }
 
 # -----------------------------------------------------------------
-# TOOL 5: Boot Speed Analyzer - bilisan mo naman
+# TOOL 5: Boot Speed Analyzer
 # -----------------------------------------------------------------
 function Invoke-BootSpeedAnalyzer {
-    Write-Host "`n🚀 nag-aactivate ng boot speed analyzer..." -ForegroundColor Cyan
+    Write-Host "`n🚀 Starting Boot Speed Analyzer..." -ForegroundColor Cyan
 
     Write-Host "`n📋 BOOT TIME ANALYSIS:" -ForegroundColor Yellow
     try {
         $BootTime = (Get-CimInstance -ClassName Win32_OperatingSystem).LastBootUpTime
         $Now = Get-Date
         $Uptime = $Now - $BootTime
-        Write-Host "  last boot: $BootTime" -ForegroundColor White
-        Write-Host "  uptime: $($Uptime.Days)d $($Uptime.Hours)h $($Uptime.Minutes)m" -ForegroundColor White
+        Write-Host "  Last Boot: $BootTime" -ForegroundColor White
+        Write-Host "  Uptime: $($Uptime.Days)d $($Uptime.Hours)h $($Uptime.Minutes)m" -ForegroundColor White
     } catch {
-        Write-Host "  ❌ nabigo ang pagkuha ng boot time" -ForegroundColor Red
+        Write-Host "  ❌ Failed to get boot time" -ForegroundColor Red
     }
 
     Write-Host "`n📋 STARTUP PROGRAMS:" -ForegroundColor Yellow
     $StartupItems = Get-CimInstance -ClassName Win32_StartupCommand
     if ($StartupItems) {
         $Count = $StartupItems.Count
-        Write-Host "  total startup items: $Count" -ForegroundColor White
+        Write-Host "  Total startup items: $Count" -ForegroundColor White
         if ($Count -gt 5) {
-            Write-Host "  ⚠️ bawasan mo ang startup items para bumilis ang boot." -ForegroundColor Yellow
+            Write-Host "  ⚠️ Consider reducing startup items for faster boot." -ForegroundColor Yellow
         }
         $StartupItems | Select-Object -First 10 | Format-Table Name, Command, Location -AutoSize
     } else {
-        Write-Host "  walang startup items na nakita." -ForegroundColor Gray
+        Write-Host "  No startup items found." -ForegroundColor Gray
     }
 
     Write-Host "`n💡 RECOMMENDATIONS:" -ForegroundColor Cyan
-    Write-Host "  - tanggalin ang unnecessary startup programs" -ForegroundColor White
-    Write-Host "  - i-enable ang fast startup sa power options" -ForegroundColor White
-    Write-Host "  - mag-iwan ng at least 20% free space sa c: drive" -ForegroundColor White
+    Write-Host "  - Disable unnecessary startup programs" -ForegroundColor White
+    Write-Host "  - Enable Fast Startup in Power Options" -ForegroundColor White
+    Write-Host "  - Keep C: drive with at least 20% free space" -ForegroundColor White
 
-    Read-Host "`npress enter para magpatuloy"
+    Read-Host "`nPress Enter to continue"
 }
 
 # -----------------------------------------------------------------
-# TOOL 6: Privacy Guard - para hindi ka ma-stalk
+# TOOL 6: Privacy Guard
 # -----------------------------------------------------------------
 function Invoke-PrivacyGuard {
-    Write-Host "`n🛡️ nag-aactivate ng privacy guard..." -ForegroundColor Cyan
+    Write-Host "`n🛡️ Starting Privacy Guard..." -ForegroundColor Cyan
 
     if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-        Write-Host "🚨 kelangan admin! parang sa banko, may security" -ForegroundColor Red
-        Read-Host "press enter para magpatuloy"
+        Write-Host "🚨 ADMIN REQUIRED! Please run as Administrator." -ForegroundColor Red
+        Read-Host "Press Enter to continue"
         return
     }
 
@@ -511,7 +508,7 @@ function Invoke-PrivacyGuard {
     $TotalCleaned = 0
     foreach ($Browser in $Browsers) {
         if (Test-Path $Browser.Path) {
-            Write-Host "  🔍 nililinis ang $($Browser.Name)..." -ForegroundColor Gray
+            Write-Host "  🔍 Cleaning $($Browser.Name)..." -ForegroundColor Gray
             $Dirs = @("Cache", "Code Cache", "Cookies", "History", "Service Worker")
             foreach ($Dir in $Dirs) {
                 $DirPath = Join-Path $Browser.Path $Dir
@@ -520,7 +517,7 @@ function Invoke-PrivacyGuard {
                     Remove-Item -Path "$DirPath\*" -Recurse -Force -ErrorAction SilentlyContinue
                     $Cleaned = [math]::Round($Size / 1MB, 1)
                     if ($Cleaned -gt 0) {
-                        Write-Host ("    ✅ " + $Dir + ": " + $Cleaned + " MB ang nalinis") -ForegroundColor Green
+                        Write-Host ("    ✅ " + $Dir + ": " + $Cleaned + " MB cleaned") -ForegroundColor Green
                         $TotalCleaned += $Cleaned
                     }
                 }
@@ -528,53 +525,53 @@ function Invoke-PrivacyGuard {
         }
     }
 
-    Write-Host "`n✅ tapos na ang privacy cleanup!" -ForegroundColor Green
-    Write-Host "  🧹 total nalinis: $([math]::Round($TotalCleaned, 1)) MB" -ForegroundColor Cyan
-    Read-Host "`npress enter para magpatuloy"
+    Write-Host "`n✅ Privacy cleanup complete!" -ForegroundColor Green
+    Write-Host "  🧹 Total cleaned: $([math]::Round($TotalCleaned, 1)) MB" -ForegroundColor Cyan
+    Read-Host "`nPress Enter to continue"
 }
 
 # -----------------------------------------------------------------
-# TOOL 7: Battery Health Checker - para sa laptop mong laging nakasaksak
+# TOOL 7: Battery Health Checker
 # -----------------------------------------------------------------
 function Invoke-BatteryHealthChecker {
-    Write-Host "`n🔋 nag-aactivate ng battery health checker..." -ForegroundColor Cyan
+    Write-Host "`n🔋 Starting Battery Health Checker..." -ForegroundColor Cyan
 
     try {
         $Battery = Get-CimInstance -ClassName Win32_Battery
         if ($Battery) {
             Write-Host "`n📋 BATTERY INFORMATION:" -ForegroundColor Yellow
-            Write-Host "  pangalan: $($Battery.Name)" -ForegroundColor White
-            Write-Host "  manufacturer: $($Battery.Manufacturer)" -ForegroundColor White
-            Write-Host "  chemistry: $($Battery.Chemistry)" -ForegroundColor White
-            Write-Host "  design capacity: $($Battery.DesignCapacity) mWh" -ForegroundColor White
-            Write-Host "  full charge capacity: $($Battery.FullChargeCapacity) mWh" -ForegroundColor White
+            Write-Host "  Name: $($Battery.Name)" -ForegroundColor White
+            Write-Host "  Manufacturer: $($Battery.Manufacturer)" -ForegroundColor White
+            Write-Host "  Chemistry: $($Battery.Chemistry)" -ForegroundColor White
+            Write-Host "  Design Capacity: $($Battery.DesignCapacity) mWh" -ForegroundColor White
+            Write-Host "  Full Charge Capacity: $($Battery.FullChargeCapacity) mWh" -ForegroundColor White
 
             $Health = [math]::Round(($Battery.FullChargeCapacity / $Battery.DesignCapacity) * 100, 1)
             if ($Health -gt 80) {
-                Write-Host "  health: $Health% ✅ excellent! parang bago" -ForegroundColor Green
+                Write-Host "  Health: $Health% ✅ Excellent" -ForegroundColor Green
             } elseif ($Health -gt 60) {
-                Write-Host "  health: $Health% ⚠️ good, pero mag-ipon ka na" -ForegroundColor Yellow
+                Write-Host "  Health: $Health% ⚠️ Good" -ForegroundColor Yellow
             } else {
-                Write-Host "  health: $Health% ❌ palitan mo na ang battery mo" -ForegroundColor Red
+                Write-Host "  Health: $Health% ❌ Consider replacing battery" -ForegroundColor Red
             }
         } else {
-            Write-Host "❌ walang battery na nakita. naka-laptop ka ba?" -ForegroundColor Yellow
+            Write-Host "❌ No battery found. Are you on a laptop?" -ForegroundColor Yellow
         }
     } catch {
-        Write-Host "❌ nabigo ang pagkuha ng battery info: $_" -ForegroundColor Red
+        Write-Host "❌ Failed to get battery info: $_" -ForegroundColor Red
     }
-    Read-Host "`npress enter para magpatuloy"
+    Read-Host "`nPress Enter to continue"
 }
 
 # -----------------------------------------------------------------
-# TOOL 8: Startup Manager Pro - tanggalin ang mga bagal
+# TOOL 8: Startup Manager Pro
 # -----------------------------------------------------------------
 function Invoke-StartupManagerPro {
-    Write-Host "`n⚙️ nag-aactivate ng startup manager pro..." -ForegroundColor Cyan
+    Write-Host "`n⚙️ Starting Startup Manager Pro..." -ForegroundColor Cyan
 
     if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-        Write-Host "🚨 kelangan admin! parang sa school, may principal" -ForegroundColor Red
-        Read-Host "press enter para magpatuloy"
+        Write-Host "🚨 ADMIN REQUIRED! Please run as Administrator." -ForegroundColor Red
+        Read-Host "Press Enter to continue"
         return
     }
 
@@ -583,79 +580,79 @@ function Invoke-StartupManagerPro {
     if ($StartupItems) {
         $StartupItems | Format-Table Name, Command, Location, User -AutoSize
         Write-Host "`n💡 RECOMMENDATIONS:" -ForegroundColor Cyan
-        Write-Host "  - items sa 'run' folder ay pwedeng tanggalin" -ForegroundColor White
-        Write-Host "  - items sa 'runonce' ay isang beses lang tatakbo" -ForegroundColor White
-        Write-Host "  - gamitin ang task manager para i-disable ang items" -ForegroundColor White
-        Write-Host "`n  press any key para buksan ang task manager..."
+        Write-Host "  - Items in 'Run' folder can be deleted" -ForegroundColor White
+        Write-Host "  - Items in 'RunOnce' run only once" -ForegroundColor White
+        Write-Host "  - Use Task Manager to disable items" -ForegroundColor White
+        Write-Host "`n  Press any key to open Task Manager..."
         Read-Host
         Start-Process "taskmgr.exe"
     } else {
-        Write-Host "  walang startup items na nakita." -ForegroundColor Gray
+        Write-Host "  No startup items found." -ForegroundColor Gray
     }
-    Read-Host "`npress enter para magpatuloy"
+    Read-Host "`nPress Enter to continue"
 }
 
 # -----------------------------------------------------------------
-# TOOL 9: Network Refresh Tool - parang restart ng internet
+# TOOL 9: Network Refresh Tool
 # -----------------------------------------------------------------
 function Invoke-NetworkRefreshTool {
-    Write-Host "`n🌐 nag-aactivate ng network refresh tool..." -ForegroundColor Cyan
+    Write-Host "`n🌐 Starting Network Refresh Tool..." -ForegroundColor Cyan
 
     if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-        Write-Host "🚨 kelangan admin! parang sa internet cafe, may admin" -ForegroundColor Red
-        Read-Host "press enter para magpatuloy"
+        Write-Host "🚨 ADMIN REQUIRED! Please run as Administrator." -ForegroundColor Red
+        Read-Host "Press Enter to continue"
         return
     }
 
     Write-Host "`n📋 NETWORK REFRESH:" -ForegroundColor Yellow
 
-    Write-Host "  🔄 ni-reset ang winsock..." -ForegroundColor Gray
+    Write-Host "  🔄 Resetting Winsock..." -ForegroundColor Gray
     netsh winsock reset
 
-    Write-Host "  🔄 ni-reset ang ip stack..." -ForegroundColor Gray
+    Write-Host "  🔄 Resetting IP Stack..." -ForegroundColor Gray
     netsh int ip reset
 
-    Write-Host "  🔄 ni-flush ang dns cache..." -ForegroundColor Gray
+    Write-Host "  🔄 Flushing DNS Cache..." -ForegroundColor Gray
     ipconfig /flushdns
 
-    Write-Host "  🔄 ni-release ang ip..." -ForegroundColor Gray
+    Write-Host "  🔄 Releasing IP..." -ForegroundColor Gray
     ipconfig /release
 
-    Write-Host "  🔄 ni-renew ang ip..." -ForegroundColor Gray
+    Write-Host "  🔄 Renewing IP..." -ForegroundColor Gray
     ipconfig /renew
 
-    Write-Host "`n✅ tapos na ang network refresh!" -ForegroundColor Green
-    Write-Host "💡 i-restart ang pc para fully ma-apply ang changes." -ForegroundColor Yellow
-    Read-Host "`npress enter para magpatuloy"
+    Write-Host "`n✅ Network refresh complete!" -ForegroundColor Green
+    Write-Host "💡 Restart your PC to fully apply changes." -ForegroundColor Yellow
+    Read-Host "`nPress Enter to continue"
 }
 
 # -----------------------------------------------------------------
-# TOOL 10: File Shredder - parang basurahan, pero permanent
+# TOOL 10: File Shredder
 # -----------------------------------------------------------------
 function Invoke-FileShredder {
-    Write-Host "`n🗑️ nag-aactivate ng file shredder..." -ForegroundColor Cyan
+    Write-Host "`n🗑️ Starting File Shredder..." -ForegroundColor Cyan
 
     if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-        Write-Host "🚨 kelangan admin! parang sa military, may clearance" -ForegroundColor Red
-        Read-Host "press enter para magpatuloy"
+        Write-Host "🚨 ADMIN REQUIRED! Please run as Administrator." -ForegroundColor Red
+        Read-Host "Press Enter to continue"
         return
     }
 
-    Write-Host "⚠️  WARNING: PERMANENTENG MABUBURA ANG FILES!" -ForegroundColor Red
-    Write-Host "  walang chance na ma-recover!" -ForegroundColor Red
+    Write-Host "⚠️  WARNING: This will PERMANENTLY delete files." -ForegroundColor Red
+    Write-Host "  No recovery is possible!" -ForegroundColor Red
     Write-Host ""
 
-    $Path = Read-Host "ilagay ang path ng file o folder na gusto mong i-shred"
+    $Path = Read-Host "Enter file or folder path to shred"
     if (-not (Test-Path $Path)) {
-        Write-Host "❌ walang ganyang path!" -ForegroundColor Red
-        Read-Host "press enter para magpatuloy"
+        Write-Host "❌ Path does not exist!" -ForegroundColor Red
+        Read-Host "Press Enter to continue"
         return
     }
 
-    $Confirm = Read-Host "gusto mo bang i-shred ang '$Path'? (YES/NO)"
+    $Confirm = Read-Host "Permanently shred '$Path'? (YES/NO)"
     if ($Confirm -ne "YES") {
-        Write-Host "kinancel mo, buti naman." -ForegroundColor Yellow
-        Read-Host "press enter para magpatuloy"
+        Write-Host "Operation cancelled." -ForegroundColor Yellow
+        Read-Host "Press Enter to continue"
         return
     }
 
@@ -679,13 +676,13 @@ function Invoke-FileShredder {
                     $Position += $WriteSize
                 }
                 $Stream.Close()
-                Write-Host "  ✅ pass $($i+1)/7 tapos na" -ForegroundColor Green
+                Write-Host "  ✅ Pass $($i+1)/7 complete" -ForegroundColor Green
             }
 
             Remove-Item -Path $FilePath -Force
-            Write-Host "  ✅ na-shred ang file: $FilePath" -ForegroundColor Green
+            Write-Host "  ✅ File shredded: $FilePath" -ForegroundColor Green
         } catch {
-            Write-Host "  ❌ nabigo ang pag-shred: $FilePath" -ForegroundColor Red
+            Write-Host "  ❌ Failed to shred: $FilePath" -ForegroundColor Red
         }
     }
 
@@ -695,46 +692,17 @@ function Invoke-FileShredder {
             Shred-File -FilePath $File.FullName
         }
         Remove-Item -Path $Path -Force -ErrorAction SilentlyContinue
-        Write-Host "✅ na-shred ang folder: $Path" -ForegroundColor Green
+        Write-Host "✅ Folder shredded: $Path" -ForegroundColor Green
     } else {
         Shred-File -FilePath $Path
     }
 
-    Write-Host "`n✅ tapos na ang shredding!" -ForegroundColor Green
-    Read-Host "`npress enter para magpatuloy"
+    Write-Host "`n✅ Shredding complete!" -ForegroundColor Green
+    Read-Host "`nPress Enter to continue"
 }
 
 # -----------------------------------------------------------------
-# TOOL 11: Windows Activation Fixer - para ma-activate ulit
-# -----------------------------------------------------------------
-function Invoke-ActivationFixer {
-    Write-Host "`n🔑 nag-aactivate ng windows activation fixer..." -ForegroundColor Cyan
-    Write-Host "  baka ma-activate na yan, tiwala lang" -ForegroundColor Yellow
-    
-    # Download and run the activation fixer
-    $url = "https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/Activation_Fixer.ps1"
-    $tempFile = "$env:TEMP\ActivationFixer_$(Get-Random).ps1"
-    
-    try {
-        Write-Host "  [*] dinadownload ang activation fixer..." -ForegroundColor Gray
-        Invoke-WebRequest -Uri $url -OutFile $tempFile -UseBasicParsing
-        
-        Write-Host "  [*] pinapatakbo ang activation fixer..." -ForegroundColor Gray
-        & $tempFile
-        
-        Write-Host "  [*] naglilinis ng kalat..." -ForegroundColor Gray
-        Remove-Item -Path $tempFile -Force -ErrorAction SilentlyContinue
-        
-        Write-Host "`n✅ tapos na ang activation fixer!" -ForegroundColor Green
-    } catch {
-        Write-Host "  ❌ nabigo ang pagtakbo ng activation fixer: $_" -ForegroundColor Red
-    }
-    
-    Read-Host "`npress enter para magpatuloy"
-}
-
-# -----------------------------------------------------------------
-# TOOL 12: About - bakit mo ba 'to ginagamit?
+# TOOL 11: About
 # -----------------------------------------------------------------
 function Show-About {
     Clear-Host
@@ -744,36 +712,35 @@ function Show-About {
 ║                                                              ║
 ║   ⚡ SHANECODES TECH HUB                                     ║
 ║                                                              ║
-║   version: $script:Version                                  ║
-║   gawa ni: $script:Author                                  ║
-║   company: $script:Company                                  ║
+║   Version: $script:Version                                  ║
+║   Created by: $script:Author                               ║
+║   Company: $script:Company                                  ║
 ║                                                              ║
-║   📧 email: $script:Contact                                ║
-║   🌐 website: $script:Website                              ║
-║   🐙 github: @shanecodes-glitch                            ║
+║   📧 Email: $script:Contact                                ║
+║   🌐 Website: $script:Website                              ║
+║   🐙 GitHub: @shanecodes-glitch                            ║
 ║                                                              ║
-║   📋 description:                                          ║
-║   mga powershell tools para sa windows                     ║
-║   diagnostic, repair, at optimization.                      ║
-║   "ginawa ko 'to kasi gusto kong makatulong"                ║
+║   📋 Description:                                          ║
+║   A collection of PowerShell tools for Windows              ║
+║   diagnostic, repair, and optimization.                     ║
 ║                                                              ║
-║   🚀 RUN FROM WEB (walang download!):                      ║
-║   irm https://tinyurl.com/shanetechub | iex                ║
+║   🚀 RUN FROM WEB (No Download!):                          ║
+║   iex (Invoke-WebRequest -Uri                                ║
+║   "https://raw.githubusercontent.com/shanecodes-glitch/     ║
+║   SHANECODES-TECH-HUB/main/tools/                          ║
+║   ShaneCodes_Launcher.ps1" -UseBasicParsing).Content        ║
 ║                                                              ║
-║   📝 license: mit                                           ║
+║   📝 License: MIT                                           ║
 ║   $script:Copyright                                         ║
-║                                                              ║
-║   💡 fun fact: ang shanecodes ay galing sa pangalan ko     ║
-║   at sa coding na gusto ko gawin.                           ║
 ║                                                              ║
 ╚══════════════════════════════════════════════════════════════╝
 
 "@ -ForegroundColor Cyan
-    Read-Host "press enter para magpatuloy"
+    Read-Host "Press Enter to continue"
 }
 
 # -----------------------------------------------------------------
-# TOOL 13: Contact Support - kung may problema, wag kang mag-alala
+# TOOL 12: Contact Support
 # -----------------------------------------------------------------
 function Show-Contact {
     Clear-Host
@@ -783,35 +750,34 @@ function Show-Contact {
 ║                                                              ║
 ║   📬 CONTACT SUPPORT                                        ║
 ║                                                              ║
-║   📧 email: $script:Contact                                ║
-║   🌐 website: $script:Website                              ║
-║   🐙 github: https://github.com/shanecodes-glitch          ║
+║   📧 Email: $script:Contact                                ║
+║   🌐 Website: $script:Website                              ║
+║   🐙 GitHub: https://github.com/shanecodes-glitch          ║
 ║                                                              ║
-║   💬 para sa mga tanong, issue, o suggestions:             ║
-║   - mag-open ng issue sa github                             ║
-║   - mag-send ng email                                       ║
-║   - bisitahin ang website                                   ║
+║   💬 For questions, issues, or suggestions:                ║
+║   - Open an issue on GitHub                                 ║
+║   - Send an email                                           ║
+║   - Visit the website                                       ║
 ║                                                              ║
-║   ⏱️ response time: 24-48 hours (baka may tulog ako)      ║
+║   ⏱️ Response time: 24-48 hours                            ║
 ║                                                              ║
 ║   🚀 RUN FROM WEB:                                         ║
-║   irm https://tinyurl.com/shanetechub | iex                ║
-║                                                              ║
-║   💡 tip: kung may issue, i-send ang error message para    ║
-║   mas madali kong ma-ayos.                                  ║
+║   iex (Invoke-WebRequest -Uri                               ║
+║   "https://raw.githubusercontent.com/shanecodes-glitch/     ║
+║   SHANECODES-TECH-HUB/main/tools/                          ║
+║   ShaneCodes_Launcher.ps1" -UseBasicParsing).Content        ║
 ║                                                              ║
 ╚══════════════════════════════════════════════════════════════╝
 
 "@ -ForegroundColor Cyan
-    Read-Host "press enter para magpatuloy"
+    Read-Host "Press Enter to continue"
 }
 
 # -----------------------------------------------------------------
-# TOOL 14: Run All Tools - parang buffet, lahat ng tools
+# TOOL 13: Run All Tools
 # -----------------------------------------------------------------
 function Invoke-AllTools {
-    Write-Host "`n🚀 pinapatakbo lahat ng tools..." -ForegroundColor Cyan
-    Write-Host "  parang buffet, lahat ng ulam" -ForegroundColor Yellow
+    Write-Host "`n🚀 Running all tools sequentially..." -ForegroundColor Cyan
     Invoke-SmartPCOptimizer
     Invoke-ShaneCodesCleaner
     Invoke-QuickFixWizard
@@ -822,13 +788,12 @@ function Invoke-AllTools {
     Invoke-StartupManagerPro
     Invoke-NetworkRefreshTool
     Invoke-FileShredder
-    Invoke-ActivationFixer
-    Write-Host "`n✅ tapos na lahat!" -ForegroundColor Green
-    Read-Host "press enter para magpatuloy"
+    Write-Host "`n✅ All tools completed!" -ForegroundColor Green
+    Read-Host "Press Enter to continue"
 }
 
 # ============================================================
-# MAIN MENU LOOP - eto ang puso ng programa
+# MAIN MENU LOOP
 # ============================================================
 do {
     Clear-Host
@@ -844,41 +809,42 @@ do {
 ║    ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝ ╚═════╝     ║
 ║                                                              ║
 ║              TOOL LAUNCHER v$script:Version                 ║
-║           gawa ni: shanecodes technologies                 ║
-║        "nag-aayos ng pc habang nag-iisip ng life choices"   ║
+║           Created by: ShaneCodes Technologies              ║
 ║                                                              ║
-║   🚀 RUN FROM WEB (walang download!):                      ║
-║   irm https://tinyurl.com/shanetechub | iex                ║
+║   🚀 RUN FROM WEB (No Download!):                          ║
+║   iex (Invoke-WebRequest -Uri                               ║
+║   "https://raw.githubusercontent.com/shanecodes-glitch/     ║
+║   SHANECODES-TECH-HUB/main/tools/                          ║
+║   ShaneCodes_Launcher.ps1" -UseBasicParsing).Content        ║
 ║                                                              ║
 ╚══════════════════════════════════════════════════════════════╝
 
 "@ -ForegroundColor Cyan
 
-    Write-Host "  📋 pumili ng tool:" -ForegroundColor Yellow
+    Write-Host "  📋 Select a tool to run:" -ForegroundColor Yellow
     Write-Host ""
     Write-Host "  ┌────┬────────────────────────────────────────────────────────────┐"
-    Write-Host "  │ #  │ pangalan ng tool                                          │"
+    Write-Host "  │ #  │ Tool Name                                                  │"
     Write-Host "  ├────┼────────────────────────────────────────────────────────────┤"
-    Write-Host "  │ 1  │ 🔧 smart pc optimizer                                     │"
-    Write-Host "  │ 2  │ 🧹 shanecodes cleaner                                     │"
-    Write-Host "  │ 3  │ ⚡ quick fix wizard                                       │"
-    Write-Host "  │ 4  │ 💾 system restore manager                                 │"
-    Write-Host "  │ 5  │ 🚀 boot speed analyzer                                    │"
-    Write-Host "  │ 6  │ 🛡️ privacy guard                                          │"
-    Write-Host "  │ 7  │ 🔋 battery health checker                                 │"
-    Write-Host "  │ 8  │ ⚙️ startup manager pro                                    │"
-    Write-Host "  │ 9  │ 🌐 network refresh tool                                   │"
-    Write-Host "  │ 10 │ 🗑️ file shredder                                          │"
-    Write-Host "  │ 11 │ 🔑 windows activation fixer                               │"
+    Write-Host "  │ 1  │ 🔧 Smart PC Optimizer                                      │"
+    Write-Host "  │ 2  │ 🧹 ShaneCodes Cleaner                                      │"
+    Write-Host "  │ 3  │ ⚡ Quick Fix Wizard                                        │"
+    Write-Host "  │ 4  │ 💾 System Restore Manager                                  │"
+    Write-Host "  │ 5  │ 🚀 Boot Speed Analyzer                                     │"
+    Write-Host "  │ 6  │ 🛡️ Privacy Guard                                           │"
+    Write-Host "  │ 7  │ 🔋 Battery Health Checker                                  │"
+    Write-Host "  │ 8  │ ⚙️ Startup Manager Pro                                     │"
+    Write-Host "  │ 9  │ 🌐 Network Refresh Tool                                    │"
+    Write-Host "  │ 10 │ 🗑️ File Shredder                                           │"
     Write-Host "  ├────┼────────────────────────────────────────────────────────────┤"
-    Write-Host "  │ 12 │ ℹ️ about this project                                     │"
-    Write-Host "  │ 13 │ 📧 contact support                                        │"
-    Write-Host "  │ 14 │ 🚀 run all tools (parang buffet)                          │"
-    Write-Host "  │ 0  │ ❌ exit - magpahinga ka na                                │"
+    Write-Host "  │ 11 │ ℹ️ About This Project                                      │"
+    Write-Host "  │ 12 │ 📧 Contact Support                                         │"
+    Write-Host "  │ 13 │ 🚀 Run All Tools (Sequential)                              │"
+    Write-Host "  │ 0  │ ❌ Exit                                                    │"
     Write-Host "  └────┴────────────────────────────────────────────────────────────┘"
     Write-Host ""
 
-    $Choice = Read-Host "  pumili ng number (0-14)"
+    $Choice = Read-Host "  Enter your choice (0-13)"
 
     switch ($Choice) {
         "1" { Invoke-SmartPCOptimizer }
@@ -891,18 +857,16 @@ do {
         "8" { Invoke-StartupManagerPro }
         "9" { Invoke-NetworkRefreshTool }
         "10" { Invoke-FileShredder }
-        "11" { Invoke-ActivationFixer }
-        "12" { Show-About }
-        "13" { Show-Contact }
-        "14" { Invoke-AllTools }
+        "11" { Show-About }
+        "12" { Show-Contact }
+        "13" { Invoke-AllTools }
         "0" { 
-            Write-Host "`nsalamat sa paggamit ng shanecodes tool launcher!" -ForegroundColor Green
+            Write-Host "`nThank you for using ShaneCodes Tool Launcher!" -ForegroundColor Green
             Write-Host $script:Copyright -ForegroundColor Gray
-            Write-Host "magpahinga ka na, deserve mo 'yan." -ForegroundColor Yellow
             exit 
         }
         default { 
-            Write-Host "`n❌ mali ang pinili mo! subukan mo ulit." -ForegroundColor Red
+            Write-Host "`n❌ Invalid choice! Press any key to try again." -ForegroundColor Red
             Read-Host
         }
     }
