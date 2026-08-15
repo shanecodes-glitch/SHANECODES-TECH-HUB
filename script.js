@@ -14,7 +14,8 @@ const tools = [
         category: 'repair',
         tags: ['Optimizer', 'Fix'],
         version: 'v1.0',
-        file: 'tools/SmartPCOptimizer.ps1'
+        file: 'tools/SmartPCOptimizer.ps1',
+        command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/SmartPCOptimizer.ps1 | iex'
     },
     {
         id: 'shanecodes-cleaner',
@@ -24,7 +25,8 @@ const tools = [
         category: 'utility',
         tags: ['Cleaner', 'Optimize'],
         version: 'v1.0',
-        file: 'tools/ShaneCodesCleaner.ps1'
+        file: 'tools/ShaneCodesCleaner.ps1',
+        command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/ShaneCodesCleaner.ps1 | iex'
     },
     {
         id: 'quick-fix-wizard',
@@ -34,7 +36,8 @@ const tools = [
         category: 'repair',
         tags: ['Fix', 'Wizard'],
         version: 'v1.0',
-        file: 'tools/QuickFixWizard.ps1'
+        file: 'tools/QuickFixWizard.ps1',
+        command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/QuickFixWizard.ps1 | iex'
     },
     {
         id: 'system-restore-manager',
@@ -44,7 +47,8 @@ const tools = [
         category: 'utility',
         tags: ['Restore', 'Backup'],
         version: 'v1.0',
-        file: 'tools/SystemRestoreManager.ps1'
+        file: 'tools/SystemRestoreManager.ps1',
+        command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/SystemRestoreManager.ps1 | iex'
     },
     {
         id: 'boot-speed-analyzer',
@@ -54,7 +58,8 @@ const tools = [
         category: 'diagnostic',
         tags: ['Boot', 'Performance'],
         version: 'v1.0',
-        file: 'tools/BootSpeedAnalyzer.ps1'
+        file: 'tools/BootSpeedAnalyzer.ps1',
+        command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/BootSpeedAnalyzer.ps1 | iex'
     },
     {
         id: 'privacy-guard',
@@ -64,7 +69,8 @@ const tools = [
         category: 'security',
         tags: ['Privacy', 'Cleaner'],
         version: 'v1.0',
-        file: 'tools/PrivacyGuard.ps1'
+        file: 'tools/PrivacyGuard.ps1',
+        command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/PrivacyGuard.ps1 | iex'
     },
     {
         id: 'battery-health-checker',
@@ -74,7 +80,8 @@ const tools = [
         category: 'diagnostic',
         tags: ['Battery', 'Laptop'],
         version: 'v1.0',
-        file: 'tools/BatteryHealthChecker.ps1'
+        file: 'tools/BatteryHealthChecker.ps1',
+        command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/BatteryHealthChecker.ps1 | iex'
     },
     {
         id: 'startup-manager-pro',
@@ -84,7 +91,8 @@ const tools = [
         category: 'utility',
         tags: ['Startup', 'Optimize'],
         version: 'v1.0',
-        file: 'tools/StartupManagerPro.ps1'
+        file: 'tools/StartupManagerPro.ps1',
+        command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/StartupManagerPro.ps1 | iex'
     },
     {
         id: 'network-refresh-tool',
@@ -94,7 +102,8 @@ const tools = [
         category: 'repair',
         tags: ['Network', 'Fix'],
         version: 'v1.0',
-        file: 'tools/NetworkRefreshTool.ps1'
+        file: 'tools/NetworkRefreshTool.ps1',
+        command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/NetworkRefreshTool.ps1 | iex'
     },
     {
         id: 'file-shredder',
@@ -104,9 +113,9 @@ const tools = [
         category: 'security',
         tags: ['Security', 'Delete'],
         version: 'v1.0',
-        file: 'tools/FileShredder.ps1'
+        file: 'tools/FileShredder.ps1',
+        command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/FileShredder.ps1 | iex'
     },
-    // ===== NEW: ACTIVATION FIXER =====
     {
         id: 'activation-fixer',
         name: 'Windows Activation Fixer',
@@ -115,7 +124,8 @@ const tools = [
         category: 'repair',
         tags: ['Activation', 'License', 'Fix'],
         version: 'v3.0',
-        file: 'tools/Activation_Fixer.ps1'
+        file: 'tools/Activation_Fixer.ps1',
+        command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/Activation_Fixer.ps1 | iex'
     }
 ];
 
@@ -123,6 +133,7 @@ const tools = [
 // DOM ELEMENTS
 // ============================================================
 const toolsGrid = document.getElementById('toolsGrid');
+const commandsGrid = document.getElementById('commandsGrid');
 const filterBtns = document.querySelectorAll('.filter-btn');
 const themeToggle = document.getElementById('themeToggle');
 const menuToggle = document.getElementById('menuToggle');
@@ -221,6 +232,56 @@ function renderTools(category = 'all') {
             </div>
         </div>
     `).join('');
+}
+
+// ============================================================
+// RENDER INDIVIDUAL COMMANDS
+// ============================================================
+function renderCommands() {
+    commandsGrid.innerHTML = tools.map(tool => `
+        <div class="command-card">
+            <div class="cmd-icon">${tool.icon}</div>
+            <div class="cmd-info">
+                <div class="cmd-name">${tool.name}</div>
+                <code class="cmd-code">${tool.command}</code>
+            </div>
+            <button class="cmd-copy-btn" onclick="copyIndividualCommand('${tool.id}')">
+                📋 Copy
+            </button>
+        </div>
+    `).join('');
+}
+
+// ============================================================
+// COPY INDIVIDUAL COMMAND
+// ============================================================
+function copyIndividualCommand(toolId) {
+    const tool = tools.find(t => t.id === toolId);
+    if (!tool) return;
+    
+    const text = tool.command;
+    
+    navigator.clipboard.writeText(text).then(() => {
+        const btns = document.querySelectorAll('.cmd-copy-btn');
+        const btn = btns.find(b => b.closest('.command-card').querySelector('.cmd-name').textContent === tool.name);
+        if (btn) {
+            btn.textContent = '✅ Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.textContent = '📋 Copy';
+                btn.classList.remove('copied');
+            }, 3000);
+        }
+        showToast(`✅ ${tool.name} command copied!`, 'success');
+    }).catch(() => {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        showToast(`✅ ${tool.name} command copied!`, 'success');
+    });
 }
 
 // ============================================================
@@ -425,36 +486,31 @@ function scrollToTools() {
 populateFooterTools();
 
 // ============================================================
-// CONTACT FORM - FIXED VERSION
+// CONTACT FORM
 // ============================================================
 function handleContactForm(event) {
     event.preventDefault();
     
-    // Get form data
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
     const subject = document.getElementById('subject').value;
     const message = document.getElementById('message').value.trim();
     
-    // Validation
     if (!name || !email || !message) {
         showToast('⚠️ Please fill in all required fields.', 'error');
         return false;
     }
     
-    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         showToast('⚠️ Please enter a valid email address.', 'error');
         return false;
     }
     
-    // Prepare email
     const recipient = 'obinguarshane77@gmail.com';
     const subjectLine = `ShaneCodes Support: ${subject}`;
     const body = `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`;
     
-    // Open email client
     const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(body)}`;
     
     try {
@@ -469,7 +525,6 @@ function handleContactForm(event) {
     return false;
 }
 
-// Attach event listener when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contactForm');
     if (form) {
@@ -481,6 +536,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // INIT
 // ============================================================
 renderTools();
+renderCommands();
 console.log('⚡ ShaneCodes Tech Hub v3.0 loaded successfully!');
 console.log('📧 Contact: obinguarshane77@gmail.com');
 console.log('🚀 Run from web: irm https://tinyurl.com/shanetechub | iex');
