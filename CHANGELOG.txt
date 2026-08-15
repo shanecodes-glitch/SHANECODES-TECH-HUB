@@ -1,0 +1,80 @@
+
+---
+
+## 📁 **FILE 4: CHANGELOG.md**
+
+```markdown
+# 📝 Changelog
+
+All notable changes to this project will be documented in this file.
+
+---
+
+## [v3.0] - 2025-01-XX
+
+### ✨ Added
+- Complete website redesign with dark/light theme
+- 11 PowerShell tools added (including Activation Fixer)
+- Tool filtering by category
+- Download tracking with stats
+- Responsive design for mobile devices
+- Contact form with email integration
+- One-command PowerShell run from web
+- Master launcher script with all tools
+
+### 🔧 Changed
+- Updated email to obinguarshane77@gmail.com
+- Updated tool descriptions and icons
+- Improved navigation and user experience
+- Enhanced error handling in all tools
+- Repository renamed to SHANECODES-TECH-HUB
+
+### 🐛 Fixed
+- Encoding issues in PowerShell scripts
+- Mobile menu toggle functionality
+- Theme persistence across sessions
+- Contact form validation
+
+---
+
+## [v2.0] - 2024-12-XX
+
+### ✨ Added
+- GitHub Pages deployment
+- Tool repository structure
+- Basic website design
+- 5 initial tools:
+  - Windows Diagnostic Tool
+  - Windows Repair Tool
+  - Activation Fixer
+  - System Cleaner
+  - Network Diagnostic
+
+### 🔧 Changed
+- Improved tool documentation
+- Enhanced user interface
+
+---
+
+## [v1.0] - 2024-11-XX
+
+### 🎉 Initial Release
+- First version of ShaneCodes Tech Hub
+- Basic website with tool listings
+- PowerShell scripts for Windows maintenance
+
+---
+
+## 🔮 **Future Plans**
+
+- [ ] Add more tools (10+ planned)
+- [ ] Create GUI version of tools
+- [ ] Add automatic update checker
+- [ ] Integrate with Windows Task Scheduler
+- [ ] Create mobile app companion
+- [ ] Add user feedback system
+- [ ] Implement cloud sync for settings
+
+---
+
+**© 2024-2025 ShaneCodes Technologies**
