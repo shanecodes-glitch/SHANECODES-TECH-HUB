@@ -1,18 +1,19 @@
 # ============================================================
-# SHANECODES CLEANER v1.0
+# SHANECODES CLEANER v1.0 (FIXED)
 # ============================================================
 # Deep clean with animated progress bar
 # Created by: ShaneCodes Technologies
 # ============================================================
 
 if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-    Write-Host "🚨 ADMIN REQUIRED!" -ForegroundColor Red
+    Write-Host "ADMIN REQUIRED!" -ForegroundColor Red
     Read-Host "Press Enter to exit"
     exit
 }
 
 Clear-Host
-$Host.UI.RawUI.WindowTitle = "🧹 ShaneCodes Cleaner - Professional"
+$Host.UI.RawUI.WindowTitle = "ShaneCodes Cleaner - Professional"
+
 Write-Host @"
 
     ███████╗██╗  ██╗ █████╗ ███╗   ██╗███████╗ ██████╗ ██████╗ ██████╗ ███████╗
@@ -21,10 +22,10 @@ Write-Host @"
     ╚════██║██╔══██║██╔══██║██║╚██╗██║██╔══╝  ██║     ██║   ██║██╔══██╗╚════██║
     ███████║██║  ██║██║  ██║██║ ╚████║███████╗╚██████╗╚██████╔╝██║  ██║███████║
     ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
-    
+
 "@ -ForegroundColor Cyan
 
-Write-Host "                    🧹 DEEP CLEANER v1.0" -ForegroundColor Yellow
+Write-Host "                    DEEP CLEANER v1.0" -ForegroundColor Yellow
 Write-Host ""
 
 # ============================================================
@@ -32,28 +33,28 @@ Write-Host ""
 # ============================================================
 function Show-Progress {
     param($Message, $Duration = 2)
-    
+
     Write-Host "  $Message" -ForegroundColor White
     Write-Host "  " -NoNewline
-    
+
     $Chars = @('▓', '▒', '░')
     $Colors = @('Red', 'Yellow', 'Green', 'Cyan', 'Magenta')
-    
+
     for ($i = 0; $i -lt 40; $i++) {
         $Color = $Colors[$i % $Colors.Length]
         $Char = $Chars[$i % $Chars.Length]
         Write-Host $Char -NoNewline -ForegroundColor $Color
         Start-Sleep -Milliseconds ($Duration * 20)
     }
-    Write-Host " ✓" -ForegroundColor Green
+    Write-Host " [OK]" -ForegroundColor Green
 }
 
 # ============================================================
-# CLEANING FUNCTION
+# CLEANING FUNCTION (FIXED: no colon in string)
 # ============================================================
 function Clean-Path {
     param($Path, $Description)
-    
+
     if (Test-Path $Path) {
         $Before = (Get-ChildItem -Path $Path -Recurse -File -ErrorAction SilentlyContinue | 
                    Measure-Object -Property Length -Sum).Sum
@@ -61,7 +62,7 @@ function Clean-Path {
         $After = (Get-ChildItem -Path $Path -Recurse -File -ErrorAction SilentlyContinue | 
                   Measure-Object -Property Length -Sum).Sum
         $Cleaned = [math]::Round(($Before - $After) / 1MB, 1)
-        Write-Host "    ✅ $Description: $Cleaned MB cleaned" -ForegroundColor Green
+        Write-Host ("    [OK] " + $Description + ": " + $Cleaned + " MB cleaned") -ForegroundColor Green
         return $Cleaned
     }
     return 0
@@ -70,7 +71,7 @@ function Clean-Path {
 # ============================================================
 # MAIN CLEANING PROCESS
 # ============================================================
-Write-Host "🔍 SCANNING FOR CLEANABLE FILES..." -ForegroundColor Yellow
+Write-Host "SCANNING FOR CLEANABLE FILES..." -ForegroundColor Yellow
 Write-Host ""
 
 $TotalCleaned = 0
@@ -102,7 +103,7 @@ foreach ($Browser in $Browsers) {
 # 5. Recycle Bin
 Show-Progress -Message "Emptying Recycle Bin..." -Duration 1
 Clear-RecycleBin -Force -ErrorAction SilentlyContinue
-Write-Host "    ✅ Recycle Bin emptied" -ForegroundColor Green
+Write-Host "    [OK] Recycle Bin emptied" -ForegroundColor Green
 
 # 6. Windows Update Cache
 Show-Progress -Message "Cleaning Windows Update cache..." -Duration 2
@@ -112,10 +113,10 @@ $TotalCleaned += Clean-Path -Path "$env:WINDIR\SoftwareDistribution\Download" -D
 # RESULTS
 # ============================================================
 Write-Host ""
-Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Cyan
-Write-Host "║                     CLEANING COMPLETE!                      ║" -ForegroundColor Cyan
-Write-Host "╠══════════════════════════════════════════════════════════════╣" -ForegroundColor Cyan
-Write-Host "║  🧹 Total space cleaned: $([math]::Round($TotalCleaned, 1)) MB           ║" -ForegroundColor Green
-Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Cyan
+Write-Host "============================================================" -ForegroundColor Cyan
+Write-Host "                     CLEANING COMPLETE!" -ForegroundColor Cyan
+Write-Host "============================================================" -ForegroundColor Cyan
+Write-Host "  Total space cleaned: $([math]::Round($TotalCleaned, 1)) MB" -ForegroundColor Green
+Write-Host "============================================================" -ForegroundColor Cyan
 
 Read-Host "`nPress Enter to exit"
