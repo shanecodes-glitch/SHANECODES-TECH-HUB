@@ -1,7 +1,8 @@
-```markdown
 # 🤝 Contributing to ShaneCodes Tech Hub
 
 First off, thank you for considering contributing to ShaneCodes Tech Hub! Your help is greatly appreciated.
+
+---
 
 ## 🎯 **How Can I Contribute?**
 
@@ -33,13 +34,6 @@ First off, thank you for considering contributing to ShaneCodes Tech Hub! Your h
 5. **Test** thoroughly
 6. **Commit** with clear message
 7. **Submit** a Pull Request
-
-### 📝 **Improving Documentation**
-
-1. **Fix** typos and grammar
-2. **Clarify** confusing sections
-3. **Add** examples
-4. **Update** outdated information
 
 ---
 
