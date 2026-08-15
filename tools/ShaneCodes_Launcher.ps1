@@ -1,3 +1,15 @@
+# ============================================================
+# SHANECODES TOOL LAUNCHER v3.0 (FUNNY EDITION)
+# ============================================================
+# eto na naman tayo, nag-aayos ng windows na di naman nasira
+# run mo lang to, sabay nood ng netflix habang naglo-load
+# ============================================================
+# gawa ni: shane nichael obinguar (shanecodes)
+# ============================================================
+# © 2024-2025 shanecodes technologies. lahat ng karapatan ay
+# nakalaan, pero pwede mong gamitin basta wag kang magreklamo
+# ============================================================
+
 Clear-Host
 $Host.UI.RawUI.WindowTitle = "⚡ shanecodes tool launcher v3.0 - chill lang"
 
@@ -53,10 +65,11 @@ $Menu = @"
   │ 8  │ ⚙️ startup manager pro - tanggalin ang mga bagal          │
   │ 9  │ 🌐 network refresh tool - parang restart ng internet     │
   │ 10 │ 🗑️ file shredder - parang basurahan, pero permanent     │
+  │ 11 │ 🔑 windows activation fixer - para ma-activate ulit      │
   ├────┼────────────────────────────────────────────────────────────┤
-  │ 11 │ ℹ️ about this project - bakit mo ba 'to ginagamit?       │
-  │ 12 │ 📧 contact support - kung may problema, wag kang mag-alala│
-  │ 13 │ 🚀 run all tools - sabay-sabay, parang buffet            │
+  │ 12 │ ℹ️ about this project - bakit mo ba 'to ginagamit?       │
+  │ 13 │ 📧 contact support - kung may problema, wag kang mag-alala│
+  │ 14 │ 🚀 run all tools - sabay-sabay, parang buffet            │
   │ 0  │ ❌ exit - mag-muni-muni ka muna                           │
   └────┴────────────────────────────────────────────────────────────┘
 "@
@@ -692,7 +705,36 @@ function Invoke-FileShredder {
 }
 
 # -----------------------------------------------------------------
-# TOOL 11: About - bakit mo ba 'to ginagamit?
+# TOOL 11: Windows Activation Fixer - para ma-activate ulit
+# -----------------------------------------------------------------
+function Invoke-ActivationFixer {
+    Write-Host "`n🔑 nag-aactivate ng windows activation fixer..." -ForegroundColor Cyan
+    Write-Host "  baka ma-activate na yan, tiwala lang" -ForegroundColor Yellow
+    
+    # Download and run the activation fixer
+    $url = "https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/Activation_Fixer.ps1"
+    $tempFile = "$env:TEMP\ActivationFixer_$(Get-Random).ps1"
+    
+    try {
+        Write-Host "  [*] dinadownload ang activation fixer..." -ForegroundColor Gray
+        Invoke-WebRequest -Uri $url -OutFile $tempFile -UseBasicParsing
+        
+        Write-Host "  [*] pinapatakbo ang activation fixer..." -ForegroundColor Gray
+        & $tempFile
+        
+        Write-Host "  [*] naglilinis ng kalat..." -ForegroundColor Gray
+        Remove-Item -Path $tempFile -Force -ErrorAction SilentlyContinue
+        
+        Write-Host "`n✅ tapos na ang activation fixer!" -ForegroundColor Green
+    } catch {
+        Write-Host "  ❌ nabigo ang pagtakbo ng activation fixer: $_" -ForegroundColor Red
+    }
+    
+    Read-Host "`npress enter para magpatuloy"
+}
+
+# -----------------------------------------------------------------
+# TOOL 12: About - bakit mo ba 'to ginagamit?
 # -----------------------------------------------------------------
 function Show-About {
     Clear-Host
@@ -731,7 +773,7 @@ function Show-About {
 }
 
 # -----------------------------------------------------------------
-# TOOL 12: Contact Support - kung may problema, wag kang mag-alala
+# TOOL 13: Contact Support - kung may problema, wag kang mag-alala
 # -----------------------------------------------------------------
 function Show-Contact {
     Clear-Host
@@ -765,7 +807,7 @@ function Show-Contact {
 }
 
 # -----------------------------------------------------------------
-# TOOL 13: Run All Tools - parang buffet, lahat ng tools
+# TOOL 14: Run All Tools - parang buffet, lahat ng tools
 # -----------------------------------------------------------------
 function Invoke-AllTools {
     Write-Host "`n🚀 pinapatakbo lahat ng tools..." -ForegroundColor Cyan
@@ -780,6 +822,7 @@ function Invoke-AllTools {
     Invoke-StartupManagerPro
     Invoke-NetworkRefreshTool
     Invoke-FileShredder
+    Invoke-ActivationFixer
     Write-Host "`n✅ tapos na lahat!" -ForegroundColor Green
     Read-Host "press enter para magpatuloy"
 }
@@ -826,15 +869,16 @@ do {
     Write-Host "  │ 8  │ ⚙️ startup manager pro                                    │"
     Write-Host "  │ 9  │ 🌐 network refresh tool                                   │"
     Write-Host "  │ 10 │ 🗑️ file shredder                                          │"
+    Write-Host "  │ 11 │ 🔑 windows activation fixer                               │"
     Write-Host "  ├────┼────────────────────────────────────────────────────────────┤"
-    Write-Host "  │ 11 │ ℹ️ about this project                                     │"
-    Write-Host "  │ 12 │ 📧 contact support                                        │"
-    Write-Host "  │ 13 │ 🚀 run all tools (parang buffet)                          │"
+    Write-Host "  │ 12 │ ℹ️ about this project                                     │"
+    Write-Host "  │ 13 │ 📧 contact support                                        │"
+    Write-Host "  │ 14 │ 🚀 run all tools (parang buffet)                          │"
     Write-Host "  │ 0  │ ❌ exit - magpahinga ka na                                │"
     Write-Host "  └────┴────────────────────────────────────────────────────────────┘"
     Write-Host ""
 
-    $Choice = Read-Host "  pumili ng number (0-13)"
+    $Choice = Read-Host "  pumili ng number (0-14)"
 
     switch ($Choice) {
         "1" { Invoke-SmartPCOptimizer }
@@ -847,9 +891,10 @@ do {
         "8" { Invoke-StartupManagerPro }
         "9" { Invoke-NetworkRefreshTool }
         "10" { Invoke-FileShredder }
-        "11" { Show-About }
-        "12" { Show-Contact }
-        "13" { Invoke-AllTools }
+        "11" { Invoke-ActivationFixer }
+        "12" { Show-About }
+        "13" { Show-Contact }
+        "14" { Invoke-AllTools }
         "0" { 
             Write-Host "`nsalamat sa paggamit ng shanecodes tool launcher!" -ForegroundColor Green
             Write-Host $script:Copyright -ForegroundColor Gray
