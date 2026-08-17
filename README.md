@@ -22,6 +22,8 @@ Copy and paste this in **PowerShell (as Administrator)**:
 ```powershell
 irm https://tinyurl.com/shanetechub | iex
 
+---
+
 📋 About This Project
 ShaneCodes Tech Hub is a curated collection of PowerShell tools designed to help Windows users diagnose, repair, and optimize their systems. Each tool is crafted with precision, tested for reliability, and offered completely free.
 
@@ -98,3 +100,5 @@ Method	Contact
 Made with ❤️ by ShaneCodes Technologies
 
 © 2026 ShaneCodes Technologies. All rights reserved.
+
+---
