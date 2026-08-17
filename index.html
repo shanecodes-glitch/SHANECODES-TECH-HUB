@@ -1,330 +1,350 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ShaneCodes Tech Hub</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShaneCodes Tech Hub — Windows PowerShell Tools</title>
+<meta name="description" content="Empowering users with powerful Windows tools. A free repository of PowerShell utilities for repair, diagnostics, security, and optimization.">
+<meta name="theme-color" content="#4f46e5">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- ===== NAVIGATION ===== -->
-    <nav class="navbar" role="navigation" aria-label="Main navigation">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-icon">⚡</span>
-                <span class="logo-text">Shane<span>Codes</span></span>
-                <span class="logo-badge">v3.0</span>
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#tools">Tools</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="nav-actions">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <span class="theme-icon">🌙</span>
-                </button>
-                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#home" class="nav-logo">
+      <span class="logo-icon">⚡</span>
+      <span class="logo-text">ShaneCodes</span>
+      <span class="version-badge">v3.0</span>
+    </a>
+
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+      <li><a href="#tools" class="nav-link" data-section="tools">Tools</a></li>
+      <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+      <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light theme">
+        <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="grid-overlay"></div>
+    </div>
+
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge reveal-item">🚀 Next Generation Tools</div>
+
+        <h1 class="hero-title reveal-item">
+          Welcome to <span class="gradient-text">ShaneCodes Tech Hub</span>
+        </h1>
+
+        <p class="hero-description reveal-item">
+          A free, growing repository of Windows PowerShell tools built to repair, clean, diagnose,
+          and secure your PC — no bloat, no nonsense, just scripts that do exactly what they say.
+        </p>
+
+        <div class="run-box reveal-item">
+          <div class="run-box-header">
+            <span class="run-box-label"><span class="dot-pulse" aria-hidden="true"></span>One-Command Setup</span>
+            <button class="copy-btn run-copy" data-copy="irm https://tinyurl.com/shanetechub | iex" aria-label="Copy install command">
+              <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          <pre class="run-box-code"><code>irm https://tinyurl.com/shanetechub | iex</code></pre>
         </div>
-    </nav>
 
-    <!-- ===== HERO SECTION ===== -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-badge">🚀 Next Generation Tools</div>
-                <h1 class="hero-title">
-                    Welcome to<br />
-                    <span class="gradient-text">ShaneCodes</span> Tech Hub
-                </h1>
-                <p class="hero-description">
-                    Your one-stop destination for powerful Windows diagnostic,
-                    repair, and automation tools. Built with precision and
-                    designed for performance.
-                </p>
-
-                <!-- ===== ONE-COMMAND POWERSHELL RUN ===== -->
-                <div class="hero-command-box">
-                    <div class="command-label">⚡ RUN FROM WEB (No Download!)</div>
-                    <div class="command-container">
-                        <code class="command-text" id="commandText">
-                            irm https://tinyurl.com/shanetechub | iex
-                        </code>
-                        <button class="btn-copy-command" onclick="copyCommand()" title="Copy to clipboard">
-                            📋 Copy
-                        </button>
-                    </div>
-                    <div class="command-hint">
-                        💡 Copy and paste this in PowerShell (as Administrator)
-                    </div>
-                </div>
-
-                <div class="hero-actions">
-                    <a href="#tools" class="btn btn-primary">Explore Tools →</a>
-                    <a href="#about" class="btn btn-secondary">Learn More</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number" data-count="12">0</span>
-                        <span class="stat-label">Tools</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number" data-count="1500">0</span>
-                        <span class="stat-label">Downloads</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number" data-count="100">0</span>
-                        <span class="stat-label">Users</span>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="floating-cards">
-                    <div class="float-card card-1">🛠️</div>
-                    <div class="float-card card-2">⚡</div>
-                    <div class="float-card card-3">🔧</div>
-                    <div class="float-card card-4">💻</div>
-                </div>
-                <div class="hero-code-block">
-                    <pre><code><span class="code-comment"># ShaneCodes Tools v3.0</span>
-<span class="code-comment"># Run from web - No download!</span>
-<span class="code-keyword">irm</span> <span class="code-string">https://tinyurl.com/shanetechub</span> <span class="code-keyword">| iex</span></code></pre>
-                </div>
-            </div>
+        <div class="hero-cta reveal-item">
+          <a href="#tools" class="btn btn-primary">Explore Tools <span aria-hidden="true">→</span></a>
+          <a href="#about" class="btn btn-secondary">Learn More</a>
         </div>
-    </section>
 
-    <!-- ===== TOOLS SECTION ===== -->
-    <section id="tools" class="tools-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">🛠️ Tool Repository</div>
-                <h2 class="section-title">Our <span class="gradient-text">Tool</span> Collection</h2>
-                <p class="section-desc">
-                    Each tool is crafted to solve specific Windows issues.
-                    Download and run with confidence.
-                </p>
-            </div>
-
-            <div class="tools-filter">
-                <button class="filter-btn active" data-filter="all">All Tools</button>
-                <button class="filter-btn" data-filter="diagnostic">Diagnostic</button>
-                <button class="filter-btn" data-filter="repair">Repair</button>
-                <button class="filter-btn" data-filter="utility">Utility</button>
-                <button class="filter-btn" data-filter="security">Security</button>
-            </div>
-
-            <div class="tools-grid" id="toolsGrid">
-                <!-- Tools will be injected by JavaScript -->
-            </div>
-
-            <!-- ===== MASTER LAUNCHER CARD ===== -->
-            <div class="master-launcher-card">
-                <div class="master-launcher-content">
-                    <div class="master-icon">🚀</div>
-                    <div class="master-info">
-                        <h3>ShaneCodes Tool Launcher</h3>
-                        <p>All tools in one script! Run directly from the web with one command.</p>
-                    </div>
-                    <div class="master-actions">
-                        <a href="tools/ShaneCodes_Launcher.ps1" download class="btn btn-download">⬇️ Download</a>
-                        <button class="btn btn-primary" onclick="copyMasterCommand()">📋 Copy Run Command</button>
-                    </div>
-                </div>
-                <div class="master-command">
-                    <code>irm https://tinyurl.com/shanetechub | iex</code>
-                </div>
-            </div>
-
-            <!-- ===== INDIVIDUAL TOOL COMMANDS ===== -->
-            <div class="individual-commands-section">
-                <div class="section-header">
-                    <div class="section-label">⚡ Quick Run</div>
-                    <h2 class="section-title">Run <span class="gradient-text">Individual</span> Tools</h2>
-                    <p class="section-desc">
-                        Copy and paste any command directly in PowerShell to run a specific tool.
-                    </p>
-                </div>
-                <div class="commands-grid" id="commandsGrid">
-                    <!-- Commands will be injected by JavaScript -->
-                </div>
-            </div>
+        <div class="hero-stats reveal-item">
+          <div class="stat">
+            <span class="stat-number" id="statTools" data-target="11">0</span>
+            <span class="stat-label">Tools</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-target="1500">0</span>
+            <span class="stat-label">Downloads</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-target="100">0</span>
+            <span class="stat-label">Users</span>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- ===== ABOUT SECTION ===== -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-content">
-                    <div class="section-label">👨‍💻 About The Creator</div>
-                    <h2 class="section-title">Shane <span class="gradient-text">Nichael</span> Obinguar</h2>
-                    <p class="about-text">
-                        I'm a passionate developer who believes that technology
-                        should be accessible to everyone. These tools are my
-                        contribution to making Windows maintenance simpler
-                        and more efficient.
-                    </p>
-                    <div class="about-skills">
-                        <div class="skill">
-                            <span class="skill-name">PowerShell</span>
-                            <div class="skill-bar"><div class="skill-fill" style="width: 95%"></div></div>
-                        </div>
-                        <div class="skill">
-                            <span class="skill-name">Batch/CMD</span>
-                            <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
-                        </div>
-                        <div class="skill">
-                            <span class="skill-name">Python</span>
-                            <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
-                        </div>
-                        <div class="skill">
-                            <span class="skill-name">Web Development</span>
-                            <div class="skill-bar"><div class="skill-fill" style="width: 75%"></div></div>
-                        </div>
-                    </div>
-                    <div class="about-social">
-                        <a href="https://github.com/shanecodes-glitch" target="_blank" class="social-link">
-                            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                            GitHub
-                        </a>
-                        <a href="mailto:obinguarshane77@gmail.com" class="social-link">
-                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                            Email
-                        </a>
-                        <a href="https://shanecodes.tech" target="_blank" class="social-link">
-                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.48 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                            Website
-                        </a>
-                    </div>
-                </div>
-                <div class="about-visual">
-                    <div class="profile-card">
-                        <div class="profile-avatar">👨‍💻</div>
-                        <div class="profile-info">
-                            <h3>Shane Nichael Obinguar</h3>
-                            <p>Founder & Lead Developer</p>
-                            <span class="profile-badge">ShaneCodes Technologies</span>
-                        </div>
-                        <div class="profile-stats">
-                            <div><strong>12+</strong> Tools Created</div>
-                            <div><strong>5+</strong> Years Experience</div>
-                            <div><strong>100%</strong> Free & Open Source</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="hero-visual reveal-item">
+        <div class="floating-cards" aria-hidden="true">
+          <span class="float-card fc-1">🛠️</span>
+          <span class="float-card fc-2">⚡</span>
+          <span class="float-card fc-3">🔧</span>
+          <span class="float-card fc-4">💻</span>
         </div>
-    </section>
 
-    <!-- ===== CONTACT SECTION ===== -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">📬 Get In Touch</div>
-                <h2 class="section-title">Contact <span class="gradient-text">Support</span></h2>
-                <p class="section-desc">Have questions or need help? Reach out and we'll respond within 24 hours.</p>
+        <div class="terminal" aria-hidden="true">
+          <div class="terminal-titlebar">
+            <span class="t-dot t-red"></span><span class="t-dot t-yellow"></span><span class="t-dot t-green"></span>
+            <span class="terminal-title">Windows PowerShell</span>
+          </div>
+          <div class="terminal-body">
+            <div class="terminal-line">
+              <span class="prompt">PS C:\Users\Shane&gt;</span>
+              <span id="typedCommand" class="typed"></span><span class="cursor">▍</span>
             </div>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <div class="contact-card">
-                        <div class="contact-icon">📧</div>
-                        <h4>Email</h4>
-                        <p>obinguarshane77@gmail.com</p>
-                        <small>Response within 24 hours</small>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">🌐</div>
-                        <h4>Website</h4>
-                        <p>https://shanecodes.tech</p>
-                        <small>Visit for updates</small>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">🐙</div>
-                        <h4>GitHub</h4>
-                        <p>@shanecodes-glitch</p>
-                        <small>Open source projects</small>
-                    </div>
-                </div>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" placeholder="Enter your name" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" placeholder="Enter your email" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <select id="subject">
-                            <option value="tool-issue">Tool Issue</option>
-                            <option value="suggestion">Suggestion</option>
-                            <option value="collaboration">Collaboration</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" rows="4" placeholder="Describe your issue or suggestion..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message →</button>
-                </form>
-            </div>
+            <div class="terminal-output" id="terminalOutput"></div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <span class="logo-icon">⚡</span>
-                    <span class="logo-text">Shane<span>Codes</span></span>
-                    <p>Empowering users with powerful Windows tools.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#tools">Tools</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Tools</h4>
-                    <ul id="footerTools">
-                        <!-- Dynamically generated -->
-                    </ul>
-                </div>
-                <div class="footer-newsletter">
-                    <h4>Stay Updated</h4>
-                    <p>Subscribe for tool updates.</p>
-                    <div class="newsletter-form">
-                        <input type="email" placeholder="Your email" />
-                        <button>Subscribe</button>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024-2025 ShaneCodes Technologies. All rights reserved.</p>
-                <div class="footer-social">
-                    <a href="https://github.com/shanecodes-glitch" target="_blank">GitHub</a>
-                    <a href="mailto:obinguarshane77@gmail.com">Email</a>
-                    <a href="https://shanecodes.tech" target="_blank">Website</a>
-                </div>
-            </div>
+  <!-- ============ TOOLS ============ -->
+  <section class="tools" id="tools">
+    <div class="container">
+      <div class="section-header reveal-item">
+        <h2>🛠️ Tool Repository</h2>
+        <p>Every tool below runs straight from a single PowerShell command. Filter by category to find what you need.</p>
+      </div>
+
+      <div class="filter-bar reveal-item" id="filterBar" role="group" aria-label="Filter tools by category">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="diagnostic">Diagnostic</button>
+        <button class="filter-btn" data-filter="repair">Repair</button>
+        <button class="filter-btn" data-filter="utility">Utility</button>
+        <button class="filter-btn" data-filter="security">Security</button>
+      </div>
+
+      <div class="tools-grid" id="toolsGrid">
+        <!-- rendered by script.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INDIVIDUAL COMMANDS ============ -->
+  <section class="commands" id="commands">
+    <div class="container">
+      <div class="section-header reveal-item">
+        <h2>⚡ Quick Run — Run Individual Tools</h2>
+        <p>Prefer to run one tool at a time? Copy any command below straight into an elevated PowerShell prompt.</p>
+      </div>
+
+      <div class="commands-list" id="commandsList">
+        <!-- rendered by script.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="about" id="about">
+    <div class="container about-grid">
+      <div class="about-visual reveal-item">
+        <div class="avatar-ring">
+          <div class="avatar-placeholder">SN</div>
         </div>
-    </footer>
+      </div>
 
-    <script src="script.js"></script>
+      <div class="about-content reveal-item">
+        <span class="eyebrow">About the Developer</span>
+        <h2>Shane Nichael Obinguar</h2>
+        <p class="role">Founder &amp; Lead Developer</p>
+        <p class="about-text">
+          I build small, focused PowerShell tools that fix the everyday annoyances of running Windows —
+          slow boots, cluttered startup lists, flaky network adapters — so you can run one command and
+          get back to work. ShaneCodes Tech Hub is where all of them live, free and open for anyone to use.
+        </p>
+
+        <div class="skills">
+          <div class="skill">
+            <div class="skill-label"><span>PowerShell</span><span>95%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-level="95"></div></div>
+          </div>
+          <div class="skill">
+            <div class="skill-label"><span>Batch / CMD</span><span>90%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-level="90"></div></div>
+          </div>
+          <div class="skill">
+            <div class="skill-label"><span>Python</span><span>80%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-level="80"></div></div>
+          </div>
+          <div class="skill">
+            <div class="skill-label"><span>Web Dev</span><span>75%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-level="75"></div></div>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="https://github.com/shanecodes-glitch" class="social-link" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.11 2.91.85.09-.67.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.05 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.32 9.32 0 0 1 5 0c1.9-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.92-2.34 4.78-4.57 5.04.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.81 0 .28.18.61.69.5A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+            GitHub
+          </a>
+          <a href="mailto:obinguarshane77@gmail.com" class="social-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+            Email
+          </a>
+          <a href="https://shanecodes.tech" class="social-link" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg>
+            Website
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-header reveal-item">
+        <h2>📬 Get In Touch</h2>
+        <p>Found a bug, have a tool request, or just want to say hi? Send a message below.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-cards reveal-item">
+          <a href="mailto:obinguarshane77@gmail.com" class="contact-card">
+            <span class="contact-icon">📧</span>
+            <div>
+              <span class="contact-title">Email</span>
+              <span class="contact-value">obinguarshane77@gmail.com</span>
+            </div>
+          </a>
+          <a href="https://shanecodes.tech" class="contact-card" target="_blank" rel="noopener">
+            <span class="contact-icon">🌐</span>
+            <div>
+              <span class="contact-title">Website</span>
+              <span class="contact-value">shanecodes.tech</span>
+            </div>
+          </a>
+          <a href="https://github.com/shanecodes-glitch" class="contact-card" target="_blank" rel="noopener">
+            <span class="contact-icon">💻</span>
+            <div>
+              <span class="contact-title">GitHub</span>
+              <span class="contact-value">@shanecodes-glitch</span>
+            </div>
+          </a>
+        </div>
+
+        <form class="contact-form reveal-item" id="contactForm" novalidate>
+          <div class="form-row">
+            <label for="cf-name">Name</label>
+            <input type="text" id="cf-name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-row">
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" name="email" placeholder="you@example.com" required>
+          </div>
+          <div class="form-row">
+            <label for="cf-subject">Subject</label>
+            <select id="cf-subject" name="subject">
+              <option value="General Inquiry">General Inquiry</option>
+              <option value="Bug Report">Bug Report</option>
+              <option value="Tool Request">Tool Request</option>
+              <option value="Collaboration">Collaboration</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="5" placeholder="What's on your mind?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="#home" class="nav-logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">ShaneCodes</span>
+      </a>
+      <p>Empowering users with powerful Windows tools.</p>
+      <div class="footer-social">
+        <a href="https://github.com/shanecodes-glitch" aria-label="GitHub" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.11 2.91.85.09-.67.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.05 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.32 9.32 0 0 1 5 0c1.9-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.92-2.34 4.78-4.57 5.04.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.81 0 .28.18.61.69.5A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+        </a>
+        <a href="mailto:obinguarshane77@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Popular Tools</h4>
+      <ul id="footerToolsList">
+        <!-- rendered by script.js -->
+      </ul>
+    </div>
+
+    <div class="footer-col footer-newsletter">
+      <h4>Stay Updated</h4>
+      <p>Get notified when new tools ship.</p>
+      <form id="newsletterForm" class="newsletter-form">
+        <input type="email" placeholder="you@example.com" aria-label="Email for newsletter" required>
+        <button type="submit" aria-label="Subscribe">→</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; <span id="year"></span> ShaneCodes Tech Hub. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ============ TOOL INFO MODAL ============ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="toolModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Close dialog">&times;</button>
+    <div class="modal-content" id="modalContent"></div>
+  </div>
+</div>
+
+<!-- ============ TOASTS ============ -->
+<div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+<script src="script.js"></script>
 </body>
 </html>
