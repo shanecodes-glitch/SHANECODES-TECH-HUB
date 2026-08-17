@@ -398,7 +398,15 @@ code, pre { font-family: var(--font-mono); }
   font-size: 3.2rem; font-weight: 800; color: var(--accent);
   border: 4px solid var(--bg-secondary);
 }
-
+/* ===== ADD THIS NEW STYLE ===== */
+.profile-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--bg-secondary);
+  display: block;
+}
 .about-content h2 { font-size: clamp(1.7rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 6px; }
 .role { color: var(--accent-soft); font-weight: 600; margin-bottom: 18px; }
 .about-text { color: var(--text-secondary); margin-bottom: 30px; max-width: 560px; }

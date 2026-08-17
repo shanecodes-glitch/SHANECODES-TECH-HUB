@@ -1,22 +1,132 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ==========================================================
-     DATA — All 11 tools including Activation Fixer
+     DATA — All 11 tools (match sa actual PS1 files mo)
      ========================================================== */
   const REPO_BASE = 'https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/';
 
   const tools = [
-    { id: 'smart-pc-optimizer', name: 'Smart PC Optimizer', icon: '⚡', description: 'Auto-detects and fixes 20+ PC issues with one click.', category: 'repair', tags: ['Optimizer', 'Fix'], version: 'v1.0', file: 'tools/SmartPCOptimizer.ps1', command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/SmartPCOptimizer.ps1 | iex' },
-    { id: 'shanecodes-cleaner', name: 'ShaneCodes Cleaner', icon: '🧹', description: 'Deep clean with animated progress bar. Removes temp files, cache, and junk.', category: 'utility', tags: ['Cleaner', 'Optimize'], version: 'v1.0', file: 'tools/ShaneCodesCleaner.ps1', command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/ShaneCodesCleaner.ps1 | iex' },
-    { id: 'quick-fix-wizard', name: 'Quick Fix Wizard', icon: '🔧', description: 'One-click fixes for common Windows problems. Network, DNS, Updates, and more.', category: 'repair', tags: ['Fix', 'Wizard'], version: 'v1.0', file: 'tools/QuickFixWizard.ps1', command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/QuickFixWizard.ps1 | iex' },
-    { id: 'system-restore-manager', name: 'System Restore Manager', icon: '💾', description: 'Create, manage, and restore system restore points with ease.', category: 'utility', tags: ['Restore', 'Backup'], version: 'v1.0', file: 'tools/SystemRestoreManager.ps1', command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/SystemRestoreManager.ps1 | iex' },
-    { id: 'boot-speed-analyzer', name: 'Boot Speed Analyzer', icon: '🚀', description: 'Measures boot time and provides optimization recommendations.', category: 'diagnostic', tags: ['Boot', 'Performance'], version: 'v1.0', file: 'tools/BootSpeedAnalyzer.ps1', command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/BootSpeedAnalyzer.ps1 | iex' },
-    { id: 'privacy-guard', name: 'Privacy Guard', icon: '🛡️', description: 'Clears browsing history, cookies, and temp files to protect your privacy.', category: 'security', tags: ['Privacy', 'Cleaner'], version: 'v1.0', file: 'tools/PrivacyGuard.ps1', command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/PrivacyGuard.ps1 | iex' },
-    { id: 'battery-health-checker', name: 'Battery Health Checker', icon: '🔋', description: 'Diagnoses laptop battery health and provides usage reports.', category: 'diagnostic', tags: ['Battery', 'Laptop'], version: 'v1.0', file: 'tools/BatteryHealthChecker.ps1', command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/BatteryHealthChecker.ps1 | iex' },
-    { id: 'startup-manager-pro', name: 'Startup Manager Pro', icon: '⚙️', description: 'Manage startup programs with intelligent recommendations.', category: 'utility', tags: ['Startup', 'Optimize'], version: 'v1.0', file: 'tools/StartupManagerPro.ps1', command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/StartupManagerPro.ps1 | iex' },
-    { id: 'network-refresh-tool', name: 'Network Refresh Tool', icon: '🌐', description: 'One-click network reset. Fixes connectivity issues instantly.', category: 'repair', tags: ['Network', 'Fix'], version: 'v1.0', file: 'tools/NetworkRefreshTool.ps1', command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/NetworkRefreshTool.ps1 | iex' },
-    { id: 'file-shredder', name: 'File Shredder', icon: '🗑️', description: 'Securely delete files with military-grade overwrite. No recovery possible.', category: 'security', tags: ['Security', 'Delete'], version: 'v1.0', file: 'tools/FileShredder.ps1', command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/FileShredder.ps1 | iex' },
-    { id: 'activation-fixer', name: 'Windows Activation Fixer', icon: '🔑', description: 'Fixes Windows activation issues. Downloads and runs the repair tool automatically.', category: 'repair', tags: ['Activation', 'License', 'Fix'], version: 'v3.0', file: 'tools/Activation_Fixer.ps1', command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/Activation_Fixer.ps1 | iex' }
+    {
+      id: 'smart-pc-optimizer',
+      name: 'Smart PC Optimizer',
+      icon: '⚡',
+      description: 'Auto-detects and fixes 20+ PC issues with one click.',
+      category: 'repair',
+      tags: ['Optimizer', 'Fix'],
+      version: 'v1.0',
+      file: 'tools/SmartPCOptimizer.ps1',
+      command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/SmartPCOptimizer.ps1 | iex'
+    },
+    {
+      id: 'shanecodes-cleaner',
+      name: 'ShaneCodes Cleaner',
+      icon: '🧹',
+      description: 'Deep clean with animated progress bar. Removes temp files, cache, and junk.',
+      category: 'utility',
+      tags: ['Cleaner', 'Optimize'],
+      version: 'v1.0',
+      file: 'tools/ShaneCodesCleaner.ps1',
+      command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/ShaneCodesCleaner.ps1 | iex'
+    },
+    {
+      id: 'quick-fix-wizard',
+      name: 'Quick Fix Wizard',
+      icon: '🔧',
+      description: 'One-click fixes for common Windows problems. Network, DNS, Updates, and more.',
+      category: 'repair',
+      tags: ['Fix', 'Wizard'],
+      version: 'v1.0',
+      file: 'tools/QuickFixWizard.ps1',
+      command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/QuickFixWizard.ps1 | iex'
+    },
+    {
+      id: 'system-restore-manager',
+      name: 'System Restore Manager',
+      icon: '💾',
+      description: 'Create, manage, and restore system restore points with ease.',
+      category: 'utility',
+      tags: ['Restore', 'Backup'],
+      version: 'v1.0',
+      file: 'tools/SystemRestoreManager.ps1',
+      command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/SystemRestoreManager.ps1 | iex'
+    },
+    {
+      id: 'boot-speed-analyzer',
+      name: 'Boot Speed Analyzer',
+      icon: '🚀',
+      description: 'Measures boot time and provides optimization recommendations.',
+      category: 'diagnostic',
+      tags: ['Boot', 'Performance'],
+      version: 'v1.0',
+      file: 'tools/BootSpeedAnalyzer.ps1',
+      command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/BootSpeedAnalyzer.ps1 | iex'
+    },
+    {
+      id: 'privacy-guard',
+      name: 'Privacy Guard',
+      icon: '🛡️',
+      description: 'Clears browsing history, cookies, and temp files to protect your privacy.',
+      category: 'security',
+      tags: ['Privacy', 'Cleaner'],
+      version: 'v1.0',
+      file: 'tools/PrivacyGuard.ps1',
+      command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/PrivacyGuard.ps1 | iex'
+    },
+    {
+      id: 'battery-health-checker',
+      name: 'Battery Health Checker',
+      icon: '🔋',
+      description: 'Diagnoses laptop battery health and provides usage reports.',
+      category: 'diagnostic',
+      tags: ['Battery', 'Laptop'],
+      version: 'v1.0',
+      file: 'tools/BatteryHealthChecker.ps1',
+      command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/BatteryHealthChecker.ps1 | iex'
+    },
+    {
+      id: 'startup-manager-pro',
+      name: 'Startup Manager Pro',
+      icon: '⚙️',
+      description: 'Manage startup programs with intelligent recommendations.',
+      category: 'utility',
+      tags: ['Startup', 'Optimize'],
+      version: 'v1.0',
+      file: 'tools/StartupManagerPro.ps1',
+      command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/StartupManagerPro.ps1 | iex'
+    },
+    {
+      id: 'network-refresh-tool',
+      name: 'Network Refresh Tool',
+      icon: '🌐',
+      description: 'One-click network reset. Fixes connectivity issues instantly.',
+      category: 'repair',
+      tags: ['Network', 'Fix'],
+      version: 'v1.0',
+      file: 'tools/NetworkRefreshTool.ps1',
+      command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/NetworkRefreshTool.ps1 | iex'
+    },
+    {
+      id: 'file-shredder',
+      name: 'File Shredder',
+      icon: '🗑️',
+      description: 'Securely delete files with military-grade overwrite. No recovery possible.',
+      category: 'security',
+      tags: ['Security', 'Delete'],
+      version: 'v1.0',
+      file: 'tools/FileShredder.ps1',
+      command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/FileShredder.ps1 | iex'
+    },
+    {
+      id: 'activation-fixer',
+      name: 'Windows Activation Fixer',
+      icon: '🔑',
+      description: 'Fixes Windows activation issues. Downloads and runs the repair tool automatically.',
+      category: 'repair',
+      tags: ['Activation', 'License', 'Fix'],
+      version: 'v3.0',
+      file: 'tools/Activation_Fixer.ps1',
+      command: 'irm https://raw.githubusercontent.com/shanecodes-glitch/SHANECODES-TECH-HUB/main/tools/Activation_Fixer.ps1 | iex'
+    }
   ];
 
   /* ---------- Utilities ---------- */
